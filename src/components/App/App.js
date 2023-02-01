@@ -1,20 +1,20 @@
 import './App.css'
 
 import Header from '../Header/Header'
-import Main from '../Main/Main'
-import Footer from '../Footer/Footer'
-import ModalWithForm from '../ModalWithForm/ModalWithForm'
-import ItemModal from '../ItemModal/ItemModal'
+// import Main from '../Main/Main'
+// import Footer from '../Footer/Footer'
+// import ModalWithForm from '../ModalWithForm/ModalWithForm'
+// import ItemModal from '../ItemModal/ItemModal'
 
 function App() {
   return (
-    <>
+    <div className="page">
       <Header />
-      <Main />
+      {/* <Main />
       <Footer />
       <ModalWithForm />
-      <ItemModal />
-    </>
+      <ItemModal /> */}
+    </div>
   )
 }
 
