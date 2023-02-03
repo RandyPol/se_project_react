@@ -11,6 +11,7 @@ const ModalWithForm = ({
   inputValues,
   setInputValues,
 }) => {
+  // Handle the escape key to close the modal
   React.useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape') {
@@ -21,6 +22,20 @@ const ModalWithForm = ({
     document.addEventListener('keydown', handleKeyPress)
     return () => {
       document.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [handleFormToggleOpen])
+
+  // Handle clicking outside the form to close the modal
+  React.useEffect(() => {
+    const handleClickOutsideForm = (event) => {
+      if (event.target.classList.contains(`modal`)) {
+        handleFormToggleOpen()
+      }
+    }
+    document.addEventListener('click', handleClickOutsideForm)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutsideForm)
     }
   }, [handleFormToggleOpen])
 
