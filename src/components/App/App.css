@@ -1,3 +1,17 @@
+@import url(../../fonts/fonts.css);
+
 .page {
-  width: 100%;
+  padding: 32px 40px 24px 40px;
+
+  background-color: #f3f3f3;
+}
+
+.page__container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.page__main {
+  margin-top: 28px;
+  margin-bottom: 171px;
 }
