@@ -108,6 +108,7 @@
 .form__radio-group {
   display: flex;
   align-items: center;
+  margin-top: 8px;
 }
 
 .form__label-radio {
@@ -140,80 +141,27 @@
   color: #000;
 }
 
-/* .modal__picture-full {
-    display: flex;
-    margin: 0;
-    max-width: 75vw;
-    max-height: 75vh;
-  } */
+.form__submit-button {
+  margin-top: 32px;
 
-/* .modal__piture-paragraph {
-    max-width: 291px;
-    margin: 0;
-    margin-top: 10px;
-  
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.25;
-  
-    color: #ffffff;
-  } */
+  width: 124px;
+  height: 36px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 
-/* .modal__close {
-    width: 40px;
-    height: 40px;
-    display: flex;
-  } */
+  cursor: pointer;
 
-/* .modal__close:hover {
-    opacity: 0.6;
-  } */
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
 
-/* .modal__deletedcard {
-    padding: 34px 36px 36px;
-    width: 100%;
-    max-width: 430px;
-    box-sizing: border-box;
-    background-color: #fff;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-  } */
-/* .modal__confirmation-title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 1.2;
-    margin: 0;
-    margin-bottom: 38px;
-    min-width: 330px;
-  } */
+  color: #ffffff;
+}
 
-/* .modal__button-yes {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    height: 50px;
-    border: 0;
-  
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.2;
-    text-align: center;
-  
-    color: #ffffff;
-  
-    background: #000000;
-    border-radius: 2px;
-  
-    cursor: pointer;
-  } */
-/*   
-  @media screen and (max-width: 569px) {
+/* @media screen and (max-width: 569px) {
     .modal__deletedcard {
       max-width: 282px;
       padding: 25px 22px 25px;
@@ -232,5 +180,4 @@
       width: 26px;
       height: 26px;
     }
-  }
-   */
+  } */
