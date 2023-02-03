@@ -63,10 +63,14 @@ function celsiusToFahrenheit(celsius) {
 }
 
 export const weatherDataProcesing = (weatherData) => {
-  const { main, name } = weatherData
-  const temp = celsiusToFahrenheit(main.temp)
+  const {
+    main: { temp },
+    name,
+  } = weatherData
+  //   Round the temperature to the nearest whole number
+  const tempFloor = Math.floor(temp)
   const weather = {
-    temp,
+    temp: tempFloor,
     name,
   }
 
