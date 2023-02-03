@@ -4,7 +4,6 @@ import WeatherCard from './WeatherCard/WeatherCard'
 import ListItemCard from './ItemCard/ListItemCard'
 
 const Main = ({ weatherData, clothingItems }) => {
-  console.log(weatherData.temp)
 
   const filterClothes = clothingItems.filter(
     (item) => item.weather === weatherData.tempDescription

@@ -65,58 +65,83 @@ function App() {
             inputValues={inputValues}
             setInputValues={setInputValues}
           >
-            <div className="modal__body">
-              <fieldset className="modal__form-group">
-                <label htmlFor="name">Name</label>
+            <div className="form__body">
+              <fieldset className="form__fieldset">
+                <label className="form__label" htmlFor="name">
+                  Name
+                </label>
                 <input
+                  className="form__input"
                   type="text"
                   id="name"
                   name="name"
+                  placeholder="Name"
                   value={inputValues.name}
                   onChange={handleInputChange}
                   required
                 />
               </fieldset>
-              <fieldset className="modal__form-group">
-                <label htmlFor="image">Image URL</label>
+              <fieldset className="form__fieldset">
+                <label className="form__label" htmlFor="image">
+                  Image URL
+                </label>
                 <input
+                  className="form__input"
                   type="text"
                   id="image"
                   name="image"
+                  placeholder="Image URL"
                   value={inputValues.image}
                   onChange={handleInputChange}
                   required
                 />
               </fieldset>
-              <fieldset className="modal__form-group">
-                <p>Select the weather type:</p>
-                <label htmlFor="hot">Hot</label>
-                <input
-                  type="radio"
-                  id="hot"
-                  name="weather"
-                  value="Hot"
-                  checked={inputValues.weather === 'Hot'}
-                  onChange={handleInputChange}
-                />
-                <label htmlFor="warm">Warm</label>
-                <input
-                  type="radio"
-                  id="warm"
-                  name="weather"
-                  value="Warm"
-                  checked={inputValues.weather === 'Warm'}
-                  onChange={handleInputChange}
-                />
-                <label htmlFor="cold">Cold</label>
-                <input
-                  type="radio"
-                  id="cold"
-                  name="weather"
-                  value="Cold"
-                  checked={inputValues.weather === 'Cold'}
-                  onChange={handleInputChange}
-                />
+              <fieldset className="form__fieldset">
+                <p className="form__radio-group-title">
+                  Select the weather type:
+                </p>
+                <div className="form__radio-group">
+                  <input
+                    className="form__input-radio"
+                    type="radio"
+                    id="hot"
+                    name="weather"
+                    value="Hot"
+                    checked={inputValues.weather === 'Hot'}
+                    onChange={handleInputChange}
+                  />
+                  <label className="form__label-radio" htmlFor="hot">
+                    Hot
+                  </label>
+                </div>
+                <div className="form__radio-group">
+                  <input
+                    className="form__input-radio"
+                    type="radio"
+                    id="warm"
+                    name="weather"
+                    value="Warm"
+                    checked={inputValues.weather === 'Warm'}
+                    onChange={handleInputChange}
+                  />
+                  <label className="form__label-radio" htmlFor="warm">
+                    Warm
+                  </label>
+                </div>
+                <div className="form__radio-group">
+                  <input
+                    className="form__input-radio"
+                    type="radio"
+                    id="cold"
+                    name="weather"
+                    value="Cold"
+                    checked={inputValues.weather === 'Cold'}
+                    onChange={handleInputChange}
+                  />
+                  <label className="form__label-radio" htmlFor="cold">
+                    Cold
+                  </label>
+                </div>
               </fieldset>
             </div>
           </ModalWithForm>
