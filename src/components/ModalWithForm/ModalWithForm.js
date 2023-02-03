@@ -11,11 +11,24 @@ const ModalWithForm = ({
   inputValues,
   setInputValues,
 }) => {
+  React.useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Escape') {
+        handleFormToggleOpen()
+      }
+    }
+    window.addEventListener('keydown', handleKeyPress)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [handleFormToggleOpen])
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // Perform submit action with inputValues
-    setInputValues({ name: '', image: '', weather: '' })
     console.log(inputValues)
+    setInputValues({ name: '', image: '', weather: '' })
     handleFormToggleOpen()
   }
 
@@ -26,7 +39,6 @@ const ModalWithForm = ({
         name={name}
         onSubmit={handleSubmit}
       >
-        {/* <div className="form__header"> */}
         <h2 className="form__title">{title}</h2>
         <button
           type="button"
@@ -35,7 +47,7 @@ const ModalWithForm = ({
         >
           <img className="form__close-icon" src={closeIcon} alt="Close icon" />
         </button>
-        {/* </div> */}
+
         {children}
         <fieldset className="form__fieldset">
           <button type="submit" className="form__submit-button">
