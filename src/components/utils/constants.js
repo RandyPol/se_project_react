@@ -37,11 +37,24 @@ const defaultClothingItems = [
   },
 ]
 
-const apiKey = 'c1430ab6198df500fa2a9ef9202d2bf6'
-
+// Coordinates for Washington, DC
 const coordinates = {
-  latitude: 0,
-  longitude: 0,
+  lat: 38.9072,
+  long: -77.0369,
 }
 
-export { defaultClothingItems, apiKey, coordinates }
+// Coordinates for Santo Domingo, Dominican Republic
+// const coordinates = {
+//   lat: 18.4861,
+//   long: -69.9312,
+// }
+// Coordinates for Dubai, United Arab Emirates
+// const coordinates = {
+//   lat: 25.2048,
+//   long: -55.2708,
+// }
+
+// API key for OpenWeatherMap
+const AUTH_TOKEN = 'c1430ab6198df500fa2a9ef9202d2bf6'
+
+export { defaultClothingItems, coordinates, AUTH_TOKEN }
