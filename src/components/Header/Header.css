@@ -8,6 +8,15 @@
   margin-right: 24px;
 }
 
+.header__location {
+  margin: 0;
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000;
+}
+
 .header__button-add {
   margin: 0;
   margin-left: auto;
@@ -16,6 +25,12 @@
   border: 0;
   background: none;
   cursor: pointer;
+
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000;
 }
 
 .header__user-container {
@@ -26,6 +41,12 @@
 
 .header__username {
   margin: 0;
+
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+  color: #000;
 }
 .header__profile-avatar {
   display: block;

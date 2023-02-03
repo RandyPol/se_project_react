@@ -1,0 +1,42 @@
+.main__card-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21px;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+.main__temp-background {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px 15px;
+  height: 80px;
+  border-radius: 12px;
+  background-color: #00a3ff;
+}
+
+.main__temp-heading {
+  margin: 0;
+
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+
+  color: #ffffff;
+}
+
+.main__todayis-paragraph {
+  margin: 40px 0 34px 0;
+
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+
+  color: #000000;
+}
