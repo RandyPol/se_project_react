@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/RandyPol/se_project_react/static/css/main.d3116c72.css",
-    "main.js": "/RandyPol/se_project_react/static/js/main.a57dd66b.js",
-    "static/js/787.79f92504.chunk.js": "/RandyPol/se_project_react/static/js/787.79f92504.chunk.js",
-    "static/media/avatar.avif": "/RandyPol/se_project_react/static/media/avatar.377f4f10c0a34538bf6e.avif",
-    "static/media/CabinetGrotesk-Medium.ttf": "/RandyPol/se_project_react/static/media/CabinetGrotesk-Medium.06e4535179580983658a.ttf",
-    "static/media/CabinetGrotesk-Bold.ttf": "/RandyPol/se_project_react/static/media/CabinetGrotesk-Bold.049721aa3e601711db60.ttf",
-    "static/media/CabinetGrotesk-Bold.woff": "/RandyPol/se_project_react/static/media/CabinetGrotesk-Bold.0fb1cbec860aa3537c32.woff",
-    "static/media/CabinetGrotesk-Medium.woff": "/RandyPol/se_project_react/static/media/CabinetGrotesk-Medium.1928499875b5b3682ea5.woff",
-    "static/media/CabinetGrotesk-Bold.woff2": "/RandyPol/se_project_react/static/media/CabinetGrotesk-Bold.c9c3bc30c44ade9d3b9b.woff2",
-    "static/media/CabinetGrotesk-Medium.woff2": "/RandyPol/se_project_react/static/media/CabinetGrotesk-Medium.467bcdaa2530ea758403.woff2",
-    "static/media/Logo.svg": "/RandyPol/se_project_react/static/media/Logo.2e52a3b54443b649938df0a9b3d231e2.svg",
-    "index.html": "/RandyPol/se_project_react/index.html",
-    "static/media/CloseModalIcon.svg": "/RandyPol/se_project_react/static/media/CloseModalIcon.5041c8cbf1275be14ac1bba3122b34f5.svg",
-    "main.d3116c72.css.map": "/RandyPol/se_project_react/static/css/main.d3116c72.css.map",
-    "main.a57dd66b.js.map": "/RandyPol/se_project_react/static/js/main.a57dd66b.js.map",
-    "787.79f92504.chunk.js.map": "/RandyPol/se_project_react/static/js/787.79f92504.chunk.js.map"
+    "main.css": "/se_project_react/static/css/main.02ccd0c5.css",
+    "main.js": "/se_project_react/static/js/main.0b0c1a70.js",
+    "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
+    "static/media/avatar.avif": "/se_project_react/static/media/avatar.377f4f10c0a34538bf6e.avif",
+    "static/media/CabinetGrotesk-Medium.ttf": "/se_project_react/static/media/CabinetGrotesk-Medium.06e4535179580983658a.ttf",
+    "static/media/CabinetGrotesk-Bold.ttf": "/se_project_react/static/media/CabinetGrotesk-Bold.049721aa3e601711db60.ttf",
+    "static/media/CabinetGrotesk-Bold.woff": "/se_project_react/static/media/CabinetGrotesk-Bold.0fb1cbec860aa3537c32.woff",
+    "static/media/CabinetGrotesk-Medium.woff": "/se_project_react/static/media/CabinetGrotesk-Medium.1928499875b5b3682ea5.woff",
+    "static/media/CabinetGrotesk-Bold.woff2": "/se_project_react/static/media/CabinetGrotesk-Bold.c9c3bc30c44ade9d3b9b.woff2",
+    "static/media/CabinetGrotesk-Medium.woff2": "/se_project_react/static/media/CabinetGrotesk-Medium.467bcdaa2530ea758403.woff2",
+    "static/media/Logo.svg": "/se_project_react/static/media/Logo.2e52a3b54443b649938df0a9b3d231e2.svg",
+    "static/media/CloseModalIcon.svg": "/se_project_react/static/media/CloseModalIcon.5041c8cbf1275be14ac1bba3122b34f5.svg",
+    "index.html": "/se_project_react/index.html",
+    "main.02ccd0c5.css.map": "/se_project_react/static/css/main.02ccd0c5.css.map",
+    "main.0b0c1a70.js.map": "/se_project_react/static/js/main.0b0c1a70.js.map",
+    "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3116c72.css",
-    "static/js/main.a57dd66b.js"
+    "static/css/main.02ccd0c5.css",
+    "static/js/main.0b0c1a70.js"
   ]
 }
