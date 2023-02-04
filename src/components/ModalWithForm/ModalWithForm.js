@@ -9,7 +9,6 @@ const ModalWithForm = ({
   handleFormToggleOpen,
   children,
   inputValues,
-  setInputValues,
 }) => {
   // Handle the escape key to close the modal
   React.useEffect(() => {
@@ -43,7 +42,6 @@ const ModalWithForm = ({
     e.preventDefault()
     // Perform submit action with inputValues
     console.log(inputValues)
-    setInputValues({ name: '', image: '', weather: '' })
     handleFormToggleOpen()
   }
 

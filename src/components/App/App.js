@@ -22,6 +22,9 @@ function App() {
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
 
+  // Card item info for the ItemModal
+  const [cardItem, setCardItem] = React.useState({})
+
   // This is the function to handle the input changes for the modal form
   const handleInputChange = (e) => {
     setInputValues({
@@ -36,7 +39,8 @@ function App() {
     setInputValues({ name: '', image: '', weather: '' })
   }
   // Handle the toggle for the ItemModal
-  const handleItemModalToggleOpen = () => {
+  const handleItemModalToggleOpen = (cardInfo) => {
+    setCardItem(cardInfo)
     setIsItemModalOpen((prevs) => !prevs)
   }
 
@@ -159,6 +163,7 @@ function App() {
           <ItemModal
             handleItemModalToggleOpen={handleItemModalToggleOpen}
             name={'image'}
+            cardItem={cardItem}
           />
         )}
       </div>
