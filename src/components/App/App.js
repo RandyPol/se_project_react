@@ -6,6 +6,7 @@ import Header from '../Header/Header'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
+import ItemModal from '../ItemModal/ItemModal'
 import { defaultClothingItems } from '../utils/constants'
 import { request, weatherDataProcesing } from '../utils/weatherApi'
 // import ModalWithForm from '../ModalWithForm/ModalWithForm'
@@ -19,6 +20,7 @@ function App() {
     weather: '',
   })
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
+  const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
 
   // This is the function to handle the input changes for the modal form
   const handleInputChange = (e) => {
@@ -32,6 +34,10 @@ function App() {
   const handleFormToggleOpen = () => {
     setIsModalFormOpen((prevs) => !prevs)
     setInputValues({ name: '', image: '', weather: '' })
+  }
+  // Handle the toggle for the ItemModal
+  const handleItemModalToggleOpen = () => {
+    setIsItemModalOpen((prevs) => !prevs)
   }
 
   React.useEffect(() => {
@@ -53,7 +59,11 @@ function App() {
           handleFormToggleOpen={handleFormToggleOpen}
           name={weatherData.name}
         />
-        <Main weatherData={weatherData} clothingItems={defaultClothingItems} />
+        <Main
+          weatherData={weatherData}
+          clothingItems={defaultClothingItems}
+          handleItemModalToggleOpen={handleItemModalToggleOpen}
+        />
 
         <Footer />
         {isModalFormOpen && (
@@ -63,7 +73,6 @@ function App() {
             buttonText="Add garment"
             handleFormToggleOpen={handleFormToggleOpen}
             inputValues={inputValues}
-            setInputValues={setInputValues}
           >
             <div className="form__body">
               <fieldset className="form__fieldset">
@@ -146,8 +155,12 @@ function App() {
             </div>
           </ModalWithForm>
         )}
-        {/* <ModalWithForm />
-      <ItemModal /> */}
+        {isItemModalOpen && (
+          <ItemModal
+            handleItemModalToggleOpen={handleItemModalToggleOpen}
+            name={'image'}
+          />
+        )}
       </div>
     </div>
   )
