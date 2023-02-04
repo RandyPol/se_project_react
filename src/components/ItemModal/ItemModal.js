@@ -3,9 +3,37 @@ import './ItemModal.css'
 import closeIcon from '../../images/CloseModalIcon.svg'
 
 const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
+  // Handle the escape key to close the modal
+  React.useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Escape') {
+        handleItemModalToggleOpen()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyPress)
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [handleItemModalToggleOpen])
+
+  // Handle clicking outside the form to close the modal
+  React.useEffect(() => {
+    const handleClickOutsideForm = (event) => {
+      if (event.target.classList.contains(`modal`)) {
+        handleItemModalToggleOpen()
+      }
+    }
+    document.addEventListener('click', handleClickOutsideForm)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutsideForm)
+    }
+  }, [handleItemModalToggleOpen])
+
   return (
     <div className={`modal modal_type_${name}`}>
-      <div className="modal__container">
+      <div className="modal__item-container">
         <button
           type="button"
           className="modal__close-button"
