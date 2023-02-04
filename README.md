@@ -18,7 +18,9 @@ The application allows the user to view the clothing items that are appropriate 
 - useState and useEffect hooks
 - Components: Weather Display, Clothing Display, Clothing Item, Clothing Modal
 - Modals: Add new clothing items, view clothing items
+- Custom form validator
 - CSS with BEM system
 
 ## Preview
+
 ![Weather App Screenshot](/src/images/weatherApp.png)
