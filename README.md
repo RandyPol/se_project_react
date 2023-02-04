@@ -20,5 +20,5 @@ The application allows the user to view the clothing items that are appropriate 
 - Modals: Add new clothing items, view clothing items
 - CSS with BEM system
 
-**Screenshots**
+## Preview
 ![Weather App Screenshot](/src/images/weatherApp.png)
