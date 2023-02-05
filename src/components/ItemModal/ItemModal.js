@@ -24,10 +24,10 @@ const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
         handleItemModalToggleOpen()
       }
     }
-    document.addEventListener('click', handleClickOutsideForm)
+    document.addEventListener('mousedown', handleClickOutsideForm)
 
     return () => {
-      document.removeEventListener('click', handleClickOutsideForm)
+      document.removeEventListener('mousedown', handleClickOutsideForm)
     }
   }, [handleItemModalToggleOpen])
 
