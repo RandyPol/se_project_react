@@ -11,29 +11,15 @@ import { request, weatherDataProcesing } from '../utils/weatherApi'
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({})
-  const [inputValues, setInputValues] = React.useState({
-    name: '',
-    image: '',
-    weather: '',
-  })
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
 
   // Card item info for the ItemModal
   const [cardItem, setCardItem] = React.useState({})
 
-  // This is the function to handle the input changes for the modal form
-  const handleInputChange = (e) => {
-    setInputValues({
-      ...inputValues,
-      [e.target.name]: e.target.value,
-    })
-  }
-
   // This is the function to toggle open and close the form modal
   const handleFormToggleOpen = () => {
     setIsModalFormOpen((prevs) => !prevs)
-    setInputValues({ name: '', image: '', weather: '' })
   }
   // Handle the toggle for the ItemModal
   const handleItemModalToggleOpen = (cardInfo) => {
@@ -71,87 +57,78 @@ function App() {
             name="addGarment"
             buttonText="Add garment"
             handleFormToggleOpen={handleFormToggleOpen}
-            inputValues={inputValues}
           >
-            <div className="form__body">
-              <fieldset className="form__fieldset">
-                <label className="form__label" htmlFor="name">
-                  Name
-                </label>
+            <fieldset className="form__fieldset">
+              <label className="form__label" htmlFor="name">
+                Name
+              </label>
+              <input
+                className="form__input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                minLength={3}
+                required
+              />
+            </fieldset>
+            <fieldset className="form__fieldset">
+              <label className="form__label" htmlFor="image">
+                Image URL
+              </label>
+              <input
+                className="form__input"
+                type="url"
+                id="image"
+                name="image"
+                placeholder="Image URL"
+                required
+              />
+            </fieldset>
+            <fieldset className="form__fieldset">
+              <p className="form__radio-group-title">
+                Select the weather type:
+              </p>
+              <div className="form__radio-group">
                 <input
-                  className="form__input"
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  value={inputValues.name}
-                  onChange={handleInputChange}
+                  className="form__input-radio"
+                  type="radio"
+                  id="hot"
+                  name="weather"
+                  value="Hot"
                   required
                 />
-              </fieldset>
-              <fieldset className="form__fieldset">
-                <label className="form__label" htmlFor="image">
-                  Image URL
+                <label className="form__label-radio" htmlFor="hot">
+                  Hot
                 </label>
+              </div>
+              <div className="form__radio-group">
                 <input
-                  className="form__input"
-                  type="text"
-                  id="image"
-                  name="image"
-                  placeholder="Image URL"
-                  value={inputValues.image}
-                  onChange={handleInputChange}
+                  className="form__input-radio"
+                  type="radio"
+                  id="warm"
+                  name="weather"
+                  value="Warm"
                   required
                 />
-              </fieldset>
-              <fieldset className="form__fieldset">
-                <p className="form__radio-group-title">
-                  Select the weather type:
-                </p>
-                <div className="form__radio-group">
-                  <input
-                    className="form__input-radio"
-                    type="radio"
-                    id="hot"
-                    name="weather"
-                    value="Hot"
-                    checked={inputValues.weather === 'Hot'}
-                    onChange={handleInputChange}
-                  />
-                  <label className="form__label-radio" htmlFor="hot">
-                    Hot
-                  </label>
-                </div>
-                <div className="form__radio-group">
-                  <input
-                    className="form__input-radio"
-                    type="radio"
-                    id="warm"
-                    name="weather"
-                    value="Warm"
-                    checked={inputValues.weather === 'Warm'}
-                    onChange={handleInputChange}
-                  />
-                  <label className="form__label-radio" htmlFor="warm">
-                    Warm
-                  </label>
-                </div>
-                <div className="form__radio-group">
-                  <input
-                    className="form__input-radio"
-                    type="radio"
-                    id="cold"
-                    name="weather"
-                    value="Cold"
-                    checked={inputValues.weather === 'Cold'}
-                    onChange={handleInputChange}
-                  />
-                  <label className="form__label-radio" htmlFor="cold">
-                    Cold
-                  </label>
-                </div>
-              </fieldset>
-            </div>
+                <label className="form__label-radio" htmlFor="warm">
+                  Warm
+                </label>
+              </div>
+              <div className="form__radio-group">
+                <input
+                  className="form__input-radio"
+                  type="radio"
+                  id="cold"
+                  name="weather"
+                  value="Cold"
+                  required
+                />
+                <label className="form__label-radio" htmlFor="cold">
+                  Cold
+                </label>
+              </div>
+            </fieldset>
           </ModalWithForm>
         )}
         {isItemModalOpen && (
