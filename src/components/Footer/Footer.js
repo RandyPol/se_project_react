@@ -3,10 +3,10 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <p className="footer__paragraphs">Developed by RandyPol</p>
-      <p className="footer__paragraphs">2023</p>
-    </div>
+      <p className="footer__paragraphs">{new Date().getFullYear()}</p>
+    </footer>
   )
 }
 
