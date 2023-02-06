@@ -6,8 +6,8 @@ import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import ItemModal from '../ItemModal/ItemModal'
-import { defaultClothingItems } from '../utils/constants'
-import { request, weatherDataProcesing } from '../utils/weatherApi'
+import { defaultClothingItems } from '../../utils/constants'
+import { request, weatherDataProcesing } from '../../utils/weatherApi'
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({})
