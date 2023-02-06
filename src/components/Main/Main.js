@@ -11,7 +11,7 @@ const Main = ({ weatherData, clothingItems, handleItemModalToggleOpen }) => {
   return (
     <main className="main page__main">
       <section>
-        <WeatherCard temp={weatherData.temp + '\u00B0'} />
+        <WeatherCard weatherData={weatherData} />
         <p className="main__todayis-paragraph">
           Today is {weatherData.temp + '\u00B0'}F / You may want to wear:
         </p>
