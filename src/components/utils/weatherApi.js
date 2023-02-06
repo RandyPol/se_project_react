@@ -62,16 +62,30 @@ export function request() {
 //   return (celsius * 9) / 5 + 32
 // }
 
+// Function to process the data from the API
 export const weatherDataProcesing = (weatherData) => {
+  // Desctructuring the data from the API
   const {
     main: { temp },
     name,
+    weather: [{ main }],
+    sys: { sunrise, sunset },
   } = weatherData
-  //   Round the temperature to the nearest whole number
-  const tempFloor = Math.floor(temp)
+
+  const currentTime = Date.now()
+  const timeOfDay =
+    currentTime >= sunrise * 1000 && currentTime < sunset * 1000
+      ? 'day'
+      : 'night'
+
+  // Creating the object with the data we need
   const weather = {
-    temp: tempFloor,
+    temp: Math.floor(temp),
     name,
+    main,
+    sunrise,
+    sunset,
+    timeOfDay,
   }
 
   if (temp >= 86) {
