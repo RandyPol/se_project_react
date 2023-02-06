@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './WeatherCard.css'
 
 const backgroundColors = {
   Clear: {
