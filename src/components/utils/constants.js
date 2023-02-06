@@ -51,7 +51,12 @@ const coordinates = {
 // Coordinates for Dubai, United Arab Emirates
 // const coordinates = {
 //   lat: 25.2048,
-//   long: -55.2708,
+//   long: 55.2708,
+// }
+// Coordinates for New Delhi, India
+// const coordinates = {
+//   lat: 25.2744,
+//   long: 133.7751,
 // }
 
 // API key for OpenWeatherMap
