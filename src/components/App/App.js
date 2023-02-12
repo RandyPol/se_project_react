@@ -25,7 +25,6 @@ function App() {
 
   // Toggle the temperature unit between Fahrenheit and Celsius
   const handleTempUnitToggle = () => {
-    console.log(!isTempFahrenheit)
     setIsTempFahrenheit((prev) => !prev)
   }
 
