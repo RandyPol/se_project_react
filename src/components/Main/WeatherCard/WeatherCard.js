@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './WeatherCard.css'
+// Import the context value
+import CurrentTemperatureUnitContext from '../../../contexts/CurrentTemperatureUnitContext'
 
 const backgroundColors = {
   Clear: {
@@ -40,7 +42,11 @@ const backgroundColors = {
   },
 }
 
-const WeatherCard = ({ weatherData }) => {
+const WeatherCard = () => {
+  const { weatherData, isTempFahrenheit } = React.useContext(
+    CurrentTemperatureUnitContext
+  )
+
   const [icon, setIcon] = useState(null)
   const timeOfDay = weatherData?.timeOfDay
   const weather = weatherData?.main
@@ -72,7 +78,11 @@ const WeatherCard = ({ weatherData }) => {
         backgroundPosition: 'right',
       }}
     >
-      <h2 className="main__temp-heading">{weatherData.temp + '\u00B0'}F</h2>
+      <h2 className="main__temp-heading">
+        {isTempFahrenheit
+          ? `${weatherData.temp}\u00B0F`
+          : `${weatherData.tempCel}\u00B0C`}
+      </h2>
     </div>
   )
 }

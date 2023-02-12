@@ -6,7 +6,9 @@ import ListItemCard from './ItemCard/ListItemCard'
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
 const Main = ({ clothingItems, handleItemModalToggleOpen }) => {
-  const { weatherData } = React.useContext(CurrentTemperatureUnitContext)
+  const { weatherData, isTempFahrenheit } = React.useContext(
+    CurrentTemperatureUnitContext
+  )
   const filterClothes = clothingItems.filter(
     (item) => item.weather === weatherData.tempDescription
   )
@@ -16,7 +18,11 @@ const Main = ({ clothingItems, handleItemModalToggleOpen }) => {
       <section>
         <WeatherCard weatherData={weatherData} />
         <p className="main__todayis-paragraph">
-          Today is {weatherData.temp + '\u00B0'}F / You may want to wear:
+          Today is{' '}
+          {isTempFahrenheit
+            ? `${weatherData.temp}\u00B0F`
+            : `${weatherData.tempCel}\u00B0C`}{' '}
+          / You may want to wear:
         </p>
         <ul className="main__card-list">
           {filterClothes.map((item) => (
