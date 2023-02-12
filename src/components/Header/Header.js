@@ -7,8 +7,10 @@ import ToggleSwitch from './ToggleSwitch/ToggleSwitch'
 // Import the context value
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
-const Header = ({ handleFormToggleOpen }) => {
-  const { weatherData } = React.useContext(CurrentTemperatureUnitContext)
+const Header = () => {
+  const { weatherData, handleFormToggleOpen } = React.useContext(
+    CurrentTemperatureUnitContext
+  )
 
   const currentDate = new Date().toLocaleString('default', {
     month: 'long',
@@ -28,7 +30,7 @@ const Header = ({ handleFormToggleOpen }) => {
       <button className="header__button-add" onClick={handleFormToggleOpen}>
         + Add clothes
       </button>
-      <Link to="/profile" className='header__profile-link'>
+      <Link to="/profile" className="header__profile-link">
         <div className="header__user-container">
           <p className="header__username">Michael Jordan</p>
           <img
