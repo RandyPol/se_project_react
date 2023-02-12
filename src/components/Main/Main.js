@@ -2,8 +2,11 @@ import React from 'react'
 import './Main.css'
 import WeatherCard from './WeatherCard/WeatherCard'
 import ListItemCard from './ItemCard/ListItemCard'
+// Import the context value
+import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
-const Main = ({ weatherData, clothingItems, handleItemModalToggleOpen }) => {
+const Main = ({ clothingItems, handleItemModalToggleOpen }) => {
+  const { weatherData } = React.useContext(CurrentTemperatureUnitContext)
   const filterClothes = clothingItems.filter(
     (item) => item.weather === weatherData.tempDescription
   )
