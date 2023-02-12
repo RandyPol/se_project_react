@@ -1,4 +1,6 @@
 import React from 'react'
+// Import the routing components from react-router-dom
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
 
 // Components
@@ -7,6 +9,7 @@ import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import ItemModal from '../ItemModal/ItemModal'
+import Profile from '../Profile/Profile'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
@@ -52,17 +55,24 @@ function App() {
     <div className="page">
       <div className="page__container">
         <CurrentTemperatureUnitContext.Provider
-          value={{ weatherData, isTempFahrenheit, handleTempUnitToggle }}
+          value={{
+            weatherData,
+            defaultClothingItems,
+            isTempFahrenheit,
+            handleTempUnitToggle,
+            handleFormToggleOpen,
+            handleItemModalToggleOpen,
+          }}
         >
-          <Header
-            handleFormToggleOpen={handleFormToggleOpen}
-            // name={weatherData.name}
-          />
-          <Main
-            // weatherData={weatherData}
-            clothingItems={defaultClothingItems}
-            handleItemModalToggleOpen={handleItemModalToggleOpen}
-          />
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
         </CurrentTemperatureUnitContext.Provider>
 
         <Footer />
