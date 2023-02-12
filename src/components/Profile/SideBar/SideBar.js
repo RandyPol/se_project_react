@@ -4,7 +4,7 @@ import './SideBar.css'
 
 const SideBar = () => {
   return (
-    <div className="sideBar">
+    <div className="sidebar profile__sidebar">
       <img
         src={avatar}
         className="sidebar__profile-avatar"
