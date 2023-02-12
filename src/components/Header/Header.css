@@ -32,6 +32,10 @@
   color: #000;
 }
 
+.header__profile-link {
+  text-decoration: none;
+}
+
 .header__user-container {
   display: flex;
   align-items: center;

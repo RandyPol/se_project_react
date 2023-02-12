@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
 import logo from '../../images/Logo.svg'
 import avatar from '../../images/avatar.avif'
@@ -16,7 +17,10 @@ const Header = ({ handleFormToggleOpen }) => {
 
   return (
     <header className="header page__headerchild">
-      <img className="header__logo" src={logo} alt="WTWR Logo" />
+      <Link to="/">
+        {' '}
+        <img className="header__logo" src={logo} alt="WTWR Logo" />
+      </Link>
       <p className="header__location">{`${currentDate}, ${weatherData.name}`}</p>
 
       <ToggleSwitch />
@@ -24,14 +28,16 @@ const Header = ({ handleFormToggleOpen }) => {
       <button className="header__button-add" onClick={handleFormToggleOpen}>
         + Add clothes
       </button>
-      <div className="header__user-container">
-        <p className="header__username">Michael Jordan</p>
-        <img
-          src={avatar}
-          className="header__profile-avatar"
-          alt="Profile avatar"
-        />
-      </div>
+      <Link to="/profile" className='header__profile-link'>
+        <div className="header__user-container">
+          <p className="header__username">Michael Jordan</p>
+          <img
+            src={avatar}
+            className="header__profile-avatar"
+            alt="Profile avatar"
+          />
+        </div>
+      </Link>
     </header>
   )
 }
