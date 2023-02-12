@@ -1,0 +1,26 @@
+.sideBar {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+}
+
+.sidebar__profile-avatar {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.sidebar__username {
+  margin: 0;
+
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+  color: #000;
+}
