@@ -1,0 +1,58 @@
+.toggle-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 56px;
+  height: 28px;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+
+  background-color: #fff;
+
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.toggle-switch-checkbox {
+  display: none;
+}
+
+/* The container for both switch labels */
+.toggle-switch-labels {
+  display: flex;
+  position: absolute;
+  width: 54px;
+  height: 26px;
+}
+
+.toggle-switch-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 26px;
+  border-radius: 50%;
+
+  color: #7e7e7e;
+
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-labels .toggle-switch-label-f {
+  background-color: black;
+  color: white;
+  box-shadow: 0px 0px 0px 3px #000;
+}
+
+.toggle-switch-checkbox:not(:checked)
+  + .toggle-switch-labels
+  .toggle-switch-label-c {
+  background-color: black;
+  color: white;
+  box-shadow: 0px 0px 0px 3px #000;
+}
