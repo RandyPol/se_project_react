@@ -1,11 +1,16 @@
 import React from 'react'
 import './App.css'
 
+// Components
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import ItemModal from '../ItemModal/ItemModal'
+// Context Data
+import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
+
+// Utils and constants
 import { defaultClothingItems } from '../../utils/constants'
 import { request, weatherDataProcesing } from '../../utils/weatherApi'
 
@@ -13,9 +18,16 @@ function App() {
   const [weatherData, setWeatherData] = React.useState({})
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
+  const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
 
   // Card item info for the ItemModal
   const [cardItem, setCardItem] = React.useState({})
+
+  // Toggle the temperature unit between Fahrenheit and Celsius
+  const handleTempUnitToggle = () => {
+    console.log(!isTempFahrenheit)
+    setIsTempFahrenheit((prev) => !prev)
+  }
 
   // This is the function to toggle open and close the form modal
   const handleFormToggleOpen = () => {
@@ -40,15 +52,19 @@ function App() {
   return (
     <div className="page">
       <div className="page__container">
-        <Header
-          handleFormToggleOpen={handleFormToggleOpen}
-          name={weatherData.name}
-        />
-        <Main
-          weatherData={weatherData}
-          clothingItems={defaultClothingItems}
-          handleItemModalToggleOpen={handleItemModalToggleOpen}
-        />
+        <CurrentTemperatureUnitContext.Provider
+          value={{ weatherData, isTempFahrenheit, handleTempUnitToggle }}
+        >
+          <Header
+            handleFormToggleOpen={handleFormToggleOpen}
+            // name={weatherData.name}
+          />
+          <Main
+            // weatherData={weatherData}
+            clothingItems={defaultClothingItems}
+            handleItemModalToggleOpen={handleItemModalToggleOpen}
+          />
+        </CurrentTemperatureUnitContext.Provider>
 
         <Footer />
         {isModalFormOpen && (
