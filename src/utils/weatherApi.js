@@ -58,9 +58,10 @@ export function request() {
   return fetch(API_URL).then(checkResponse)
 }
 
-// function celsiusToFahrenheit(celsius) {
-//   return (celsius * 9) / 5 + 32
-// }
+// Function Fer to Cel
+const ferToCel = (fer) => {
+  return Math.floor((fer - 32) * (5 / 9))
+}
 
 // Function to process the data from the API
 export const weatherDataProcesing = (weatherData) => {
@@ -81,6 +82,7 @@ export const weatherDataProcesing = (weatherData) => {
   // Creating the object with the data we need
   const weather = {
     temp: Math.floor(temp),
+    tempCel: ferToCel(temp),
     name,
     main,
     sunrise,
