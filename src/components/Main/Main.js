@@ -9,10 +9,10 @@ const Main = () => {
   const {
     weatherData,
     isTempFahrenheit,
-    defaultClothingItems,
+    clothingItems,
     handleItemModalToggleOpen,
   } = React.useContext(CurrentTemperatureUnitContext)
-  const filterClothes = defaultClothingItems.filter(
+  const filterClothes = clothingItems.filter(
     (item) => item.weather === weatherData.tempDescription
   )
 
@@ -30,7 +30,7 @@ const Main = () => {
         <ul className="main__card-list">
           {filterClothes.map((item) => (
             <ListItemCard
-              key={item._id}
+              key={item.id}
               item={item}
               weather={weatherData.tempDescription}
               handleItemModalToggleOpen={handleItemModalToggleOpen}

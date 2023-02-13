@@ -43,7 +43,7 @@ const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
         </button>
         <img
           className="modal__card-image"
-          src={cardItem.link}
+          src={cardItem.imageUrl}
           alt={cardItem.name}
         ></img>
         <div className="modal__title-weather-container">

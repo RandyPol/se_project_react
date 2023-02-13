@@ -7,7 +7,7 @@ const ClothesSection = () => {
   const {
     weatherData,
     handleFormToggleOpen,
-    defaultClothingItems,
+    clothingItems,
     handleItemModalToggleOpen,
   } = React.useContext(CurrentTemperatureUnitContext)
   return (
@@ -22,9 +22,9 @@ const ClothesSection = () => {
         </button>
       </div>
       <ul className="clothessection__card-list">
-        {defaultClothingItems.map((item) => (
+        {clothingItems.map((item) => (
           <ListItemCard
-            key={item._id}
+            key={item.id}
             item={item}
             weather={weatherData.tempDescription}
             handleItemModalToggleOpen={handleItemModalToggleOpen}
