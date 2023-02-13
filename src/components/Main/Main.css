@@ -1,8 +1,11 @@
+.main {
+  max-width: 1360px;
+}
 .main__card-list {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 21px;
+  gap: 20px;
   margin: 0;
   padding: 0;
 
