@@ -42,16 +42,23 @@
   border-radius: 16px 16px 0px 0px;
 }
 
+.modal__card-info-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 20px 32px 32px 32px;
+
+  overflow: hidden;
+
+  border-radius: 0px 0px 16px 16px;
+}
+
 .modal__title-weather-container {
   display: flex;
   flex-direction: column;
   row-gap: 12px;
   margin: 0;
-  padding: 20px 0px 32px 32px;
-
-  border-radius: 0px 0px 16px 16px;
-
-  overflow: hidden;
 }
 
 .modal__card-paragraphs {
@@ -64,4 +71,20 @@
   color: #000000;
 
   margin: 0;
+}
+
+.modal__delete-button {
+  padding: 0;
+  border: 0;
+
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+
+  color: #ff4d00;
+
+  background: none;
+  cursor: pointer;
 }

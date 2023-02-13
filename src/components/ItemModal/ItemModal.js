@@ -46,9 +46,20 @@ const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
           src={cardItem.imageUrl}
           alt={cardItem.name}
         ></img>
-        <div className="modal__title-weather-container">
-          <p className="modal__card-paragraphs">{cardItem.name}</p>
-          <p className="modal__card-paragraphs">Weather: {cardItem.weather}</p>
+        <div className="modal__card-info-container">
+          <div className="modal__title-weather-container">
+            <p className="modal__card-paragraphs">{cardItem.name}</p>
+            <p className="modal__card-paragraphs">
+              Weather: {cardItem.weather}
+            </p>
+          </div>
+          <button
+            type="button"
+            className="modal__delete-button"
+            onClick={() => console.log('delete')}
+          >
+            Delete item
+          </button>
         </div>
       </div>
     </div>
