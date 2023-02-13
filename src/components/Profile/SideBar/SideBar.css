@@ -1,6 +1,6 @@
 .sidebar {
+  min-width: 229px;
   display: flex;
-  column-gap: 16px;
   align-items: center;
 }
 
@@ -13,9 +13,12 @@
   overflow: hidden;
   object-fit: cover;
   cursor: pointer;
+
+  margin-right: 16px;
 }
 
 .sidebar__username {
+  width: 157px;
   margin: 0;
 
   font-family: 'Cabinet Grotesk';
@@ -23,4 +26,6 @@
   font-size: 20px;
   line-height: 1.25;
   color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
