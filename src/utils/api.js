@@ -15,7 +15,7 @@ const request = (url, options) => {
  * The method is Get by default so we don't need to specify it
  * @returns {Promise} Promise object represents the result of fetching the initial cards from the server
  */
-export const getInitialClothingItems = () => {
+const getInitialClothingItems = () => {
   return request(`${BASE_URL}/items`, {
     method: 'GET',
     headers: {
@@ -24,8 +24,32 @@ export const getInitialClothingItems = () => {
   })
 }
 
+/**
+ * Post a new clothing item to the server
+ * @param {Object} item - The new clothing item to be posted
+ * @returns {Promise} Promise object represents the result of posting the new card to the server
+ * @example
+ * const item = {
+ * name: 'T-shirt',
+ * weather: 'hot',
+ * imageUrl: 'https://images.unsplash.com/23234',
+ * }
+ *
+ */
+
+const postClothingItem = (item) => {
+  return request(`${BASE_URL}/items`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(item),
+  })
+}
+
 const api = {
   getInitialClothingItems,
+  postClothingItem,
 }
 
 export default api
