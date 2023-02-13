@@ -19,7 +19,7 @@ const Main = () => {
   return (
     <main className="main page__main">
       <section>
-        <WeatherCard weatherData={weatherData} />
+        <WeatherCard />
         <p className="main__todayis-paragraph">
           Today is{' '}
           {isTempFahrenheit
