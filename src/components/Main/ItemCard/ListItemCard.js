@@ -2,7 +2,7 @@ import cx from 'classnames'
 import React from 'react'
 import './ListItemCard.css'
 
-const ItemCard = ({ className, item, weather, handleItemModalToggleOpen }) => {
+const ItemCard = ({ className, item, handleItemModalToggleOpen }) => {
   const cardInfo = { ...item }
   return (
     <li className={cx(className, 'card')}>

@@ -45,11 +45,11 @@ const AddItemModal = ({ onAddItem, handleFormToggleOpen }) => {
       (inputValue) => inputValue === ''
     )
 
-    const validityEmpty = Object.values(validity).some((validity) => {
-      return validity.valid === false
+    const validityIncomplete = Object.values(validity).some((inputItem) => {
+      return inputItem.valid === false
     })
 
-    return isInputValueEmpty || validityEmpty
+    return isInputValueEmpty || validityIncomplete
   }
 
   // This is the function to handle the input changes for the modal form
@@ -126,7 +126,6 @@ const AddItemModal = ({ onAddItem, handleFormToggleOpen }) => {
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}
       handleChild={handleChild}
-
     >
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="name">
