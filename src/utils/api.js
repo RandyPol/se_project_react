@@ -23,3 +23,9 @@ export const getInitialClothingItems = () => {
     },
   })
 }
+
+const api = {
+  getInitialClothingItems,
+}
+
+export default api
