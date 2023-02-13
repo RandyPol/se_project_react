@@ -47,9 +47,26 @@ const postClothingItem = (item) => {
   })
 }
 
+/**
+ * Delete a clothing item from the server
+ * @param {String} id - The id of the clothing item to be deleted
+ * @returns {Promise} Promise object represents the result of deleting the card from the server
+ *
+ */
+
+const deleteClothesItem = (id) => {
+  return request(`${BASE_URL}/items/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
 const api = {
   getInitialClothingItems,
   postClothingItem,
+  deleteClothesItem
 }
 
 export default api
