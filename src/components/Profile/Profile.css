@@ -1,4 +1,5 @@
 .profile {
+  max-width: 1360px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
