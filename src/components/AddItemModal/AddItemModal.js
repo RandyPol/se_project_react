@@ -110,9 +110,6 @@ const AddItemModal = ({ isLoading, onAddItem, handleFormToggleOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Perform submit action with inputValues
-    console.log(inputValues)
-    console.log(validity)
     onAddItem(inputValues)
   }
 
