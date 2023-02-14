@@ -3,7 +3,7 @@ import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import LabelWithError from '../ModalWithForm/LabelWithError/LabelWithError'
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
-const AddItemModal = ({ onAddItem, handleFormToggleOpen }) => {
+const AddItemModal = ({ isLoading, onAddItem, handleFormToggleOpen }) => {
   const [inputValues, setInputValues] = React.useState({
     name: '',
     imageUrl: '',
@@ -114,14 +114,13 @@ const AddItemModal = ({ onAddItem, handleFormToggleOpen }) => {
     console.log(inputValues)
     console.log(validity)
     onAddItem(inputValues)
-    handleFormToggleOpen()
   }
 
   return (
     <ModalWithForm
       title="New garment"
       name="addGarment"
-      buttonText="Add garment"
+      buttonText={isLoading ? 'Saving...' : 'Add garment'}
       handleFormToggleOpen={handleFormToggleOpen}
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}
