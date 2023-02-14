@@ -25,6 +25,8 @@ function App() {
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
+
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
   // Clothing items from the api
   const [clothingItems, setClothingItems] = React.useState([])
@@ -72,16 +74,22 @@ function App() {
   }
   // Add a new clothing item to the server
   const handleAddItemSubmit = (newItem) => {
+    setIsLoading((prev) => !prev)
     api
       .postClothingItem(newItem)
       .then((addedData) => {
         setClothingItems([addedData, ...clothingItems])
       })
       .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading((prev) => !prev)
+        setIsModalFormOpen((prevs) => !prevs)
+      })
   }
 
   // Delete a clothing item from the server
   const handleCardDelete = (id) => {
+    setIsLoading((prev) => !prev)
     api
       .deleteClothesItem(id)
       .then(() => {
@@ -91,6 +99,10 @@ function App() {
         setClothingItems(newClothingItems)
       })
       .catch((err) => console.log(err))
+      .finally(() => {
+        handleDeleteModalToggleOpen()
+        setIsLoading((prev) => !prev)
+      })
   }
 
   return (
@@ -119,6 +131,7 @@ function App() {
           <Footer />
           {isModalFormOpen && (
             <AddItemModal
+              isLoading={isLoading}
               onAddItem={handleAddItemSubmit}
               handleFormToggleOpen={handleFormToggleOpen}
             />
@@ -136,6 +149,7 @@ function App() {
               cardItem={cardItem}
               handleCardDelete={handleCardDelete}
               handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
+              isLoading={isLoading}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
