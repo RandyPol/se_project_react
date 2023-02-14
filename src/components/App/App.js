@@ -10,6 +10,7 @@ import Footer from '../Footer/Footer'
 import ItemModal from '../ItemModal/ItemModal'
 import Profile from '../Profile/Profile'
 import AddItemModal from '../AddItemModal/AddItemModal'
+import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 // Utils and constants
@@ -23,10 +24,11 @@ function App() {
   const [weatherData, setWeatherData] = React.useState({})
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
   // Clothing items from the api
   const [clothingItems, setClothingItems] = React.useState([])
-  // Card item info for the ItemModal/The Card that was clicked
+  // Card item info for the Card that was clicked to open the ItemModal
   const [cardItem, setCardItem] = React.useState({})
 
   // Api call to get the weather data from the weather api (on mount only once)
@@ -35,7 +37,6 @@ function App() {
       .then((data) => {
         // Update the weather data in the state after processing the data
         const processData = weatherDataProcesing(data)
-        console.log(processData)
         setWeatherData(processData)
       })
       .catch((err) => console.log(err))
@@ -65,13 +66,29 @@ function App() {
     setCardItem(cardInfo)
     setIsItemModalOpen((prevs) => !prevs)
   }
-
+  // Handle the toggle for the DeleteModal
+  const handleDeleteModalToggleOpen = () => {
+    setIsDeleteModalOpen((prevs) => !prevs)
+  }
   // Add a new clothing item to the server
   const handleAddItemSubmit = (newItem) => {
     api
       .postClothingItem(newItem)
       .then((addedData) => {
         setClothingItems([addedData, ...clothingItems])
+      })
+      .catch((err) => console.log(err))
+  }
+
+  // Delete a clothing item from the server
+  const handleCardDelete = (id) => {
+    api
+      .deleteClothesItem(id)
+      .then(() => {
+        const newClothingItems = clothingItems.filter((item) => {
+          return item.id !== id
+        })
+        setClothingItems(newClothingItems)
       })
       .catch((err) => console.log(err))
   }
@@ -111,6 +128,14 @@ function App() {
               handleItemModalToggleOpen={handleItemModalToggleOpen}
               name={'image'}
               cardItem={cardItem}
+              handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
+            />
+          )}
+          {isDeleteModalOpen && (
+            <DeleteConfirmationModal
+              cardItem={cardItem}
+              handleCardDelete={handleCardDelete}
+              handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
