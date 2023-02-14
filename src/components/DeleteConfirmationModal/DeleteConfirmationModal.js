@@ -3,6 +3,7 @@ import './DeleteConfirmationModal.css'
 import closeIcon from '../../images/CloseModalIcon.svg'
 
 const DeleteConfirmationModal = ({
+  isLoading,
   cardItem,
   handleCardDelete,
   handleDeleteModalToggleOpen,
@@ -34,11 +35,11 @@ const DeleteConfirmationModal = ({
       document.removeEventListener('mousedown', handleClickOutsideForm)
     }
   }, [handleDeleteModalToggleOpen])
+
   // Handle click for delete button to open confirmation modal and
   // close item modal
   const handleDeleteButtonClick = () => {
     handleCardDelete(cardItem.id)
-    handleDeleteModalToggleOpen()
   }
 
   return (
@@ -56,20 +57,28 @@ const DeleteConfirmationModal = ({
           irreversible.
         </p>
 
-        <button
-          type="button"
-          className="modal__delete-confirm"
-          onClick={handleDeleteButtonClick}
-        >
-          Yes, delete item
-        </button>
-        <button
-          type="button"
-          className="modal__delete-cancel"
-          onClick={handleDeleteModalToggleOpen}
-        >
-          Cancel
-        </button>
+        {isLoading ? (
+          <button type="button" className="modal__delete-confirm">
+            Deleting...
+          </button>
+        ) : (
+          <>
+            <button
+              type="button"
+              className="modal__delete-confirm"
+              onClick={handleDeleteButtonClick}
+            >
+              Yes, delete item
+            </button>
+            <button
+              type="button"
+              className="modal__delete-cancel"
+              onClick={handleDeleteModalToggleOpen}
+            >
+              Cancel
+            </button>
+          </>
+        )}
       </div>
     </div>
   )
