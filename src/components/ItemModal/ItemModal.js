@@ -2,7 +2,12 @@ import React from 'react'
 import './ItemModal.css'
 import closeIcon from '../../images/CloseModalIcon.svg'
 
-const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
+const ItemModal = ({
+  name,
+  cardItem,
+  handleItemModalToggleOpen,
+  handleDeleteModalToggleOpen,
+}) => {
   // Handle the escape key to close the modal
   React.useEffect(() => {
     const handleKeyPress = (event) => {
@@ -31,6 +36,13 @@ const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
     }
   }, [handleItemModalToggleOpen])
 
+  // Handle click for delete button to open confirmation modal and
+  // close item modal
+  const handleDeleteButtonClick = () => {
+    handleItemModalToggleOpen(cardItem)
+    handleDeleteModalToggleOpen()
+  }
+
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__item-container">
@@ -56,7 +68,7 @@ const ItemModal = ({ name, cardItem, handleItemModalToggleOpen }) => {
           <button
             type="button"
             className="modal__delete-button"
-            onClick={() => console.log('delete')}
+            onClick={handleDeleteButtonClick}
           >
             Delete item
           </button>
