@@ -30,6 +30,27 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
 }
+.popup_container_image {
+  border-radius: 16px;
+  width: 498px;
+  height: 610px;
+
+  background-color: #fff;
+}
+
+.popup_container_deleteConfirmation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 152px;
+  width: 670px;
+  height: 280px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
 
 .popup__close {
   position: absolute;
