@@ -9,7 +9,6 @@ const ModalWithForm = ({
   handleFormToggleOpen,
   children,
   handleSubmit,
-  handleChild,
   isSubmitDisabled,
 }) => {
   return (
@@ -29,17 +28,14 @@ const ModalWithForm = ({
           <img className="form__close-icon" src={closeIcon} alt="Close icon" />
         </button>
 
-        <div className="form__body">
-          {/* Children represent the list of inputs given by the App/parent component */}
-          {React.Children.map(children, handleChild)}
-        </div>
+        <div className="form__body">{children}</div>
 
         <fieldset className="form__fieldset">
           <button
             type="submit"
-            disabled={isSubmitDisabled()}
+            disabled={isSubmitDisabled}
             className={
-              isSubmitDisabled()
+              isSubmitDisabled
                 ? 'form__submit-button_disabled'
                 : 'form__submit-button_base'
             }

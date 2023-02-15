@@ -1,116 +1,42 @@
 import React from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
-import LabelWithError from '../ModalWithForm/LabelWithError/LabelWithError'
+import { useFormAndValidation } from '../../hook/useFormAndValidation'
 
-// onAddItem refers to handleAddItemSubmit, which is declared in App.js
 const AddItemModal = ({ isLoading, onAddItem, handleFormToggleOpen }) => {
-  const [inputValues, setInputValues] = React.useState({
-    name: '',
-    imageUrl: '',
-    weather: '',
-  })
-  const [validity, setValidity] = React.useState({})
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation()
 
-  // Handle the escape key to close the modal
   React.useEffect(() => {
+    // Handle the escape key to close the modal
     const handleKeyPress = (event) => {
       if (event.key === 'Escape') {
         handleFormToggleOpen()
       }
     }
-
-    document.addEventListener('keydown', handleKeyPress)
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress)
-    }
-  }, [handleFormToggleOpen])
-
-  // Handle clicking outside the form to close the modal
-  React.useEffect(() => {
+    // Handle clicking outside the form to close the modal
     const handleClickOutsideForm = (event) => {
       if (event.target.classList.contains(`modal`)) {
         handleFormToggleOpen()
       }
     }
+    // Add event listeners for the escape key and clicking outside the form
+    document.addEventListener('keydown', handleKeyPress)
     document.addEventListener('mousedown', handleClickOutsideForm)
 
     return () => {
+      document.removeEventListener('keydown', handleKeyPress)
       document.removeEventListener('mousedown', handleClickOutsideForm)
     }
   }, [handleFormToggleOpen])
 
-  // Check the inputValues and the validity to see if the submit button should be disabled
-  const isSubmitDisabled = () => {
-    const isInputValueEmpty = Object.values(inputValues).some(
-      (inputValue) => inputValue === ''
-    )
+  // Check if submit button should be disabled
+  const isSubmitDisabled = !isValid
 
-    const validityIncomplete = Object.values(validity).some((inputItem) => {
-      return inputItem.valid === false
-    })
-
-    return isInputValueEmpty || validityIncomplete
-  }
-
-  // This is the function to handle the input changes for the modal form
-  const handleInputChange = (e) => {
-    let input = e.target
-    let id = input.id
-    setInputValues({
-      ...inputValues,
-      [input.name]: input.value,
-    })
-    // console.log(input.validity.valid)
-    if (input.validity.valid) {
-      // console.log('Updated the validity is not valid')
-      setValidity({ ...validity, [id]: { valid: true, message: '' } })
-    } else {
-      // console.log('Updated the validity')
-      setValidity({
-        ...validity,
-        [id]: { valid: false, message: input.validationMessage },
-      })
-    }
-  }
-
-  // Function to handle the children type passed by the App component
-  const handleChild = (child) => {
-    if (child.type === 'input') {
-      let id = child.props.id
-      if (child.props.type === 'radio') {
-        return React.cloneElement(child, {
-          onChange: handleInputChange,
-          checked: inputValues.weather === child.props.value,
-        })
-      }
-      return React.cloneElement(child, {
-        onChange: handleInputChange,
-        value: inputValues[id],
-        className:
-          validity[id] && !validity[id].valid
-            ? 'form__input form__input-error'
-            : 'form__input',
-      })
-    } else if (child.type === 'label') {
-      return (
-        <LabelWithError
-          htmlFor={child.props.htmlFor}
-          validity={validity}
-          textContent={child.props.children}
-          labelClassName={child.props.className}
-        />
-      )
-    } else if (child.props && child.props.children) {
-      let children = React.Children.map(child.props.children, handleChild)
-      return React.cloneElement(child, { children })
-    } else {
-      return child
-    }
-  }
-
+  // Handle submit button click
   const handleSubmit = (e) => {
     e.preventDefault()
-    onAddItem(inputValues)
+    onAddItem(values)
+    resetForm()
   }
 
   return (
@@ -121,71 +47,98 @@ const AddItemModal = ({ isLoading, onAddItem, handleFormToggleOpen }) => {
       handleFormToggleOpen={handleFormToggleOpen}
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}
-      handleChild={handleChild}
     >
       <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="name">
-          Name
+        <label
+          htmlFor="name"
+          className={errors.name ? 'form__label_error' : 'form__label'}
+        >
+          {errors.name ? `Name: (${errors.name})` : 'Name: '}
         </label>
         <input
-          className="form__input"
-          type="text"
+          className={`form__input ${errors.name && 'form__input-error'}`}
           id="name"
           name="name"
-          placeholder="Name"
-          minLength={3}
+          type="text"
+          placeholder="Enter the name"
           required
+          minLength="2"
+          maxLength="30"
+          value={values.name || ''}
+          onChange={handleChange}
         />
       </fieldset>
       <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="imageUrl">
-          Image URL
+        <label
+          htmlFor="imageUrl"
+          className={errors.imageUrl ? 'form__label_error' : 'form__label'}
+        >
+          {errors.imageUrl ? `Image URL: (${errors.imageUrl})` : 'Image URL: '}
         </label>
+
         <input
-          className="form__input"
-          type="url"
+          className={`form__input ${errors.imageUrl && 'form__input-error'}`}
           id="imageUrl"
           name="imageUrl"
-          placeholder="Image URL"
+          type="url"
+          placeholder="Enter the image URL"
           required
+          value={values.imageUrl || ''}
+          onChange={handleChange}
         />
       </fieldset>
+
       <fieldset className="form__fieldset">
-        <p className="form__radio-group-title">Select the weather type:</p>
+        <legend
+          className={errors.weather ? 'form__label_error' : 'form__label'}
+        >
+          {errors.weather
+            ? `Select the weather type: (${errors.weather})`
+            : ' Select the weather type:'}
+        </legend>
+
         <div className="form__radio-group">
           <input
-            className="form__input-radio"
-            type="radio"
+            className={`form__input-radio`}
             id="hot"
             name="weather"
+            type="radio"
             value="hot"
             required
+            checked={values.weather === 'hot'}
+            onChange={handleChange}
           />
           <label className="form__label-radio" htmlFor="hot">
             Hot
           </label>
         </div>
+
         <div className="form__radio-group">
           <input
-            className="form__input-radio"
-            type="radio"
+            className={`form__input-radio`}
             id="warm"
             name="weather"
+            type="radio"
             value="warm"
             required
+            checked={values.weather === 'warm'}
+            onChange={handleChange}
           />
           <label className="form__label-radio" htmlFor="warm">
             Warm
           </label>
         </div>
+
         <div className="form__radio-group">
           <input
-            className="form__input-radio"
-            type="radio"
+            className={`form__input-radio`}
             id="cold"
             name="weather"
+            type="radio"
             value="cold"
             required
+            checked={values.weather === 'cold'}
+            onChange={handleChange}
           />
           <label className="form__label-radio" htmlFor="cold">
             Cold
