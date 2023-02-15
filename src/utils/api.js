@@ -67,7 +67,7 @@ const deleteClothesItem = (id) => {
 const api = {
   getInitialClothingItems,
   postClothingItem,
-  deleteClothesItem
+  deleteClothesItem,
 }
 
 export default api
