@@ -110,6 +110,9 @@ function App() {
       <div className="page__container">
         <CurrentTemperatureUnitContext.Provider
           value={{
+            isModalFormOpen,
+            isItemModalOpen,
+            isDeleteModalOpen,
             weatherData,
             clothingItems,
             isTempFahrenheit,
@@ -146,10 +149,12 @@ function App() {
           )}
           {isDeleteModalOpen && (
             <DeleteConfirmationModal
+              isLoading={isLoading}
+              isDeleteModalOpen={isDeleteModalOpen}
+              name={'deleteConfirmation'}
               cardItem={cardItem}
               handleCardDelete={handleCardDelete}
               handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
-              isLoading={isLoading}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
