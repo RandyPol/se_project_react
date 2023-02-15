@@ -149,10 +149,12 @@ function App() {
           )}
           {isDeleteModalOpen && (
             <DeleteConfirmationModal
+              isLoading={isLoading}
+              isDeleteModalOpen={isDeleteModalOpen}
+              name={'deleteConfirmation'}
               cardItem={cardItem}
               handleCardDelete={handleCardDelete}
               handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
-              isLoading={isLoading}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
