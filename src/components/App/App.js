@@ -110,6 +110,9 @@ function App() {
       <div className="page__container">
         <CurrentTemperatureUnitContext.Provider
           value={{
+            isModalFormOpen,
+            isItemModalOpen,
+            isDeleteModalOpen,
             weatherData,
             clothingItems,
             isTempFahrenheit,
