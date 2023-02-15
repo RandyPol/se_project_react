@@ -64,6 +64,10 @@
   border: none;
 }
 
+.form__body + .form__fieldset {
+  margin: 0;
+  margin-bottom: 0;
+}
 .form__label {
   font-family: 'Cabinet Grotesk';
   font-style: normal;
