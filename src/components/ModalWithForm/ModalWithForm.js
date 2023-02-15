@@ -15,7 +15,6 @@ const ModalWithForm = ({
 }) => {
   const { isModalFormOpen } = React.useContext(CurrentTemperatureUnitContext)
 
-  console.log('Is submit disabled: ', isSubmitDisabled)
   return (
     <Popup
       isOpen={isModalFormOpen}
