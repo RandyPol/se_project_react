@@ -79,11 +79,11 @@ function App() {
       .postClothingItem(newItem)
       .then((addedData) => {
         setClothingItems([addedData, ...clothingItems])
+        setIsModalFormOpen((prevs) => !prevs)
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setIsLoading((prev) => !prev)
-        setIsModalFormOpen((prevs) => !prevs)
       })
   }
 
@@ -97,10 +97,10 @@ function App() {
           return item.id !== id
         })
         setClothingItems(newClothingItems)
+        handleDeleteModalToggleOpen()
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        handleDeleteModalToggleOpen()
         setIsLoading((prev) => !prev)
       })
   }
