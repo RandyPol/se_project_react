@@ -1,6 +1,8 @@
 import React from 'react'
+import Popup from '../Popup/Popup'
 import './ModalWithForm.css'
-import closeIcon from '../../images/CloseModalIcon.svg'
+// Import the context value
+import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
 const ModalWithForm = ({
   title,
@@ -11,22 +13,17 @@ const ModalWithForm = ({
   handleSubmit,
   isSubmitDisabled,
 }) => {
+  const { isModalFormOpen } = React.useContext(CurrentTemperatureUnitContext)
+
+  console.log('Is submit disabled: ', isSubmitDisabled)
   return (
-    <div className={`modal modal_type_${name}`}>
-      <form
-        className="form modal__container"
-        name={name}
-        onSubmit={handleSubmit}
-        noValidate
-      >
+    <Popup
+      isOpen={isModalFormOpen}
+      onClose={handleFormToggleOpen}
+      containerName={name}
+    >
+      <form className="form" name={name} onSubmit={handleSubmit} noValidate>
         <h2 className="form__title">{title}</h2>
-        <button
-          type="button"
-          className="form__close-button"
-          onClick={handleFormToggleOpen}
-        >
-          <img className="form__close-icon" src={closeIcon} alt="Close icon" />
-        </button>
 
         <div className="form__body">{children}</div>
 
@@ -44,7 +41,7 @@ const ModalWithForm = ({
           </button>
         </fieldset>
       </form>
-    </div>
+    </Popup>
   )
 }
 
