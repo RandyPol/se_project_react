@@ -6,6 +6,10 @@ A React-based weather wardrobe management application that provides the function
 
 [ https://randypol.github.io/se_project_react/]
 
+## Back-end Repo: Click the link below to see the back-end repo.
+
+[ https://github.com/RandyPol/se_project_express]
+
 ## Description
 
 The application allows the user to view the clothing items that are appropriate for the current weather conditions of a provided location using latitude and longitude. The weather data is retrieved using a weather API. The user can also view the details of each clothing item added, including a description and image.
