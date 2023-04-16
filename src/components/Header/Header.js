@@ -8,7 +8,7 @@ import ToggleSwitch from './ToggleSwitch/ToggleSwitch'
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
 const Header = () => {
-  const { weatherData, handleFormToggleOpen } = React.useContext(
+  const { weatherData, handleFormToggleOpen, loggedIn } = React.useContext(
     CurrentTemperatureUnitContext
   )
 
@@ -27,19 +27,38 @@ const Header = () => {
 
       <ToggleSwitch />
 
-      <button className="header__button-add" onClick={handleFormToggleOpen}>
-        + Add clothes
-      </button>
-      <Link to="/profile" className="header__profile-link">
-        <div className="header__user-container">
-          <p className="header__username">Michael Jordan</p>
-          <img
-            src={avatar}
-            className="header__profile-avatar"
-            alt="Profile avatar"
-          />
-        </div>
-      </Link>
+      {loggedIn ? (
+        <>
+          <button className="header__button-add" onClick={handleFormToggleOpen}>
+            + Add clothes
+          </button>
+          <Link to="/profile" className="header__profile-link">
+            <div className="header__user-container">
+              <p className="header__username">Michael Jordan</p>
+              <img
+                src={avatar}
+                className="header__profile-avatar"
+                alt="Profile avatar"
+              />
+            </div>
+          </Link>
+        </>
+      ) : (
+        <>
+          <button
+            className="header__button-SignUp"
+            onClick={handleFormToggleOpen}
+          >
+            Sign Up
+          </button>
+          <button
+            className="header__button-LogIn"
+            onClick={handleFormToggleOpen}
+          >
+            Log In
+          </button>
+        </>
+      )}
     </header>
   )
 }

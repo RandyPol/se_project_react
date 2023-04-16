@@ -123,12 +123,13 @@ function App() {
             handleTempUnitToggle,
             handleFormToggleOpen,
             handleItemModalToggleOpen,
+            loggedIn,
           }}
         >
-          <Header />
+          <Header loggedIn={loggedIn} />
           <Switch>
             <Route exact path="/">
-              {loggedIn ? <Main /> : <Redirect to="/login" />}
+              <Main />
             </Route>
             <ProtectedRoute
               path="/profile"
