@@ -1,4 +1,14 @@
-export const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'http://localhost:3001'
+
+// Check the response from the server
+const checkResponse = (res) => {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+}
+
+// Standar fetch request
+const request = (url, options) => {
+  return fetch(url, options).then(checkResponse)
+}
 
 /**
  *
@@ -9,29 +19,19 @@ export const BASE_URL = 'http://localhost:3001'
  * @returns {Promise} this is the promise of the request to the server. It returns the user data if the request is successful, otherwise it returns null.
  *
  */
-export const register = async (name, avatar, email, password) => {
-  try {
-    const response = await fetch(`${BASE_URL}/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        avatar,
-        email,
-        password,
-      }),
-    })
-    if (!response.ok) {
-      throw new Error('Some error happend in the server')
-    }
-    const data = await response.json()
-    return data
-  } catch (error) {
-    console.error(error)
-    return null
-  }
+const register = (name, avatar, email, password) => {
+  return request(`${BASE_URL}/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+      email,
+      password,
+    }),
+  })
 }
 
 /**
@@ -42,29 +42,22 @@ export const register = async (name, avatar, email, password) => {
  *
  * */
 
-export const authorize = async (email, password) => {
-  try {
-    const response = await fetch(`${BASE_URL}/signin`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-    if (!response.ok) {
-      throw new Error('Some error happend in the server')
-    }
-    const data = await response.json()
-    if (data.token) {
-      localStorage.setItem('token', data.token)
-      return data
-    }
-    return null
-  } catch (error) {
-    console.error(error)
-    return null
-  }
+const authorize = ({ email, password }) => {
+  return request(`${BASE_URL}/signin`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  })
 }
+
+const auth = {
+  register,
+  authorize,
+}
+
+export default auth
