@@ -11,29 +11,6 @@ const AddItemModal = ({
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
 
-  React.useEffect(() => {
-    // Handle the escape key to close the modal
-    const handleKeyPress = (event) => {
-      if (event.key === 'Escape') {
-        handleFormToggleOpen()
-      }
-    }
-    // Handle clicking outside the form to close the modal
-    const handleClickOutsideForm = (event) => {
-      if (event.target.classList.contains(`modal`)) {
-        handleFormToggleOpen()
-      }
-    }
-    // Add event listeners for the escape key and clicking outside the form
-    document.addEventListener('keydown', handleKeyPress)
-    document.addEventListener('mousedown', handleClickOutsideForm)
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress)
-      document.removeEventListener('mousedown', handleClickOutsideForm)
-    }
-  }, [handleFormToggleOpen])
-
   // Check if submit button should be disabled
   const isSubmitDisabled = !isValid
 
