@@ -2,7 +2,12 @@ import React from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import { useFormAndValidation } from '../../hook/useFormAndValidation'
 
-const AddItemModal = ({ isLoading, onAddItem, handleFormToggleOpen }) => {
+const AddItemModal = ({
+  isLoading,
+  onAddItem,
+  handleFormToggleOpen,
+  isModalFormOpen,
+}) => {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
 
@@ -47,6 +52,7 @@ const AddItemModal = ({ isLoading, onAddItem, handleFormToggleOpen }) => {
       handleFormToggleOpen={handleFormToggleOpen}
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}
+      isOpen={isModalFormOpen}
     >
       <fieldset className="form__fieldset">
         <label

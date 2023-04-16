@@ -131,6 +131,7 @@ function App() {
             handleTempUnitToggle,
             handleFormToggleOpen,
             handleItemModalToggleOpen,
+            handleRegisterModalToggleOpen,
             loggedIn,
           }}
         >
@@ -149,6 +150,7 @@ function App() {
           <Footer />
           {isModalFormOpen && (
             <AddItemModal
+              isModalFormOpen={isModalFormOpen}
               isLoading={isLoading}
               onAddItem={handleAddItemSubmit}
               handleFormToggleOpen={handleFormToggleOpen}

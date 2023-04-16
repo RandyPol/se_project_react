@@ -1,8 +1,6 @@
 import React from 'react'
 import Popup from '../Popup/Popup'
 import './ModalWithForm.css'
-// Import the context value
-import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
 const ModalWithForm = ({
   title,
@@ -12,15 +10,10 @@ const ModalWithForm = ({
   children,
   handleSubmit,
   isSubmitDisabled,
+  isOpen,
 }) => {
-  const { isModalFormOpen } = React.useContext(CurrentTemperatureUnitContext)
-
   return (
-    <Popup
-      isOpen={isModalFormOpen}
-      onClose={handleFormToggleOpen}
-      containerName={name}
-    >
+    <Popup isOpen={isOpen} onClose={handleFormToggleOpen} containerName={name}>
       <form className="form" name={name} onSubmit={handleSubmit} noValidate>
         <h2 className="form__title">{title}</h2>
 
