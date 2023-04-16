@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:3001'
-const BASE_URL = 'https://my-json-server.typicode.com/randypol/se_project_react'
+const BASE_URL = 'http://localhost:3001'
+// const BASE_URL = 'https://my-json-server.typicode.com/randypol/se_project_react'
 
 // Check the response from the server
 const checkResponse = (res) => {
