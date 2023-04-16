@@ -8,9 +8,12 @@ import ToggleSwitch from './ToggleSwitch/ToggleSwitch'
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 
 const Header = () => {
-  const { weatherData, handleFormToggleOpen, loggedIn } = React.useContext(
-    CurrentTemperatureUnitContext
-  )
+  const {
+    weatherData,
+    handleFormToggleOpen,
+    handleRegisterModalToggleOpen,
+    loggedIn,
+  } = React.useContext(CurrentTemperatureUnitContext)
 
   const currentDate = new Date().toLocaleString('default', {
     month: 'long',
@@ -47,7 +50,7 @@ const Header = () => {
         <>
           <button
             className="header__button-SignUp"
-            onClick={handleFormToggleOpen}
+            onClick={handleRegisterModalToggleOpen}
           >
             Sign Up
           </button>
