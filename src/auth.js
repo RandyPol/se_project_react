@@ -42,7 +42,7 @@ const register = (name, avatar, email, password) => {
  *
  * */
 
-const authorize = ({ email, password }) => {
+const authorize = ( email, password ) => {
   return request(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
