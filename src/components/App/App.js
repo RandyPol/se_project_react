@@ -11,6 +11,7 @@ import ItemModal from '../ItemModal/ItemModal'
 import Profile from '../Profile/Profile'
 import AddItemModal from '../AddItemModal/AddItemModal'
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal'
+import RegisterModal from '../RegisterModal/RegisterModal'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 // Utils and constants
@@ -27,6 +28,7 @@ function App() {
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
+  const [isRegisterFormOpen, setIsRegisterFormOpen] = React.useState(false)
 
   // Login state
   const [loggedIn, setLoggedIn] = React.useState(false)
@@ -67,6 +69,12 @@ function App() {
   const handleFormToggleOpen = () => {
     setIsModalFormOpen((prevs) => !prevs)
   }
+
+  // Handle the toggle for the RegisterModal
+  const handleRegisterModalToggleOpen = () => {
+    setIsRegisterFormOpen((prevs) => !prevs)
+  }
+
   // Handle the toggle for the ItemModal
   const handleItemModalToggleOpen = (cardInfo) => {
     setCardItem(cardInfo)
@@ -126,7 +134,7 @@ function App() {
             loggedIn,
           }}
         >
-          <Header loggedIn={loggedIn} />
+          <Header />
           <Switch>
             <Route exact path="/">
               <Main />
@@ -152,6 +160,13 @@ function App() {
               name={'image'}
               cardItem={cardItem}
               handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
+            />
+          )}
+          {isRegisterFormOpen && (
+            <RegisterModal
+              isLoading={isLoading}
+              isRegisterFormOpen={isRegisterFormOpen}
+              handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
             />
           )}
           {isDeleteModalOpen && (
