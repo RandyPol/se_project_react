@@ -62,6 +62,17 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
 }
+.popup_container_login {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 36px;
+  width: 100%;
+  max-width: 496px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
 
 
 
