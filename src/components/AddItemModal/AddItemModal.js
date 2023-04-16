@@ -40,8 +40,9 @@ const AddItemModal = ({
   // Handle submit button click
   const handleSubmit = (e) => {
     e.preventDefault()
-    onAddItem(values)
-    resetForm()
+    onAddItem(values).then(() => {
+      resetForm()
+    })
   }
 
   return (

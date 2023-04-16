@@ -93,8 +93,11 @@ function App() {
       .then((addedData) => {
         setClothingItems([addedData, ...clothingItems])
         setIsModalFormOpen((prevs) => !prevs)
+        return Promise.resolve()
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+      })
       .finally(() => {
         setIsLoading((prev) => !prev)
       })
