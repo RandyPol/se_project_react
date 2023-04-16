@@ -1,6 +1,6 @@
 import React from 'react'
 // Import the routing components from react-router-dom
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
 
 // Components
@@ -12,6 +12,7 @@ import Profile from '../Profile/Profile'
 import AddItemModal from '../AddItemModal/AddItemModal'
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal'
 import RegisterModal from '../RegisterModal/RegisterModal'
+import LoginModal from '../LoginModal/LoginModal'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 // Utils and constants
@@ -30,6 +31,7 @@ function App() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
   const [isRegisterFormOpen, setIsRegisterFormOpen] = React.useState(false)
+  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
 
   // Login state
   const [loggedIn, setLoggedIn] = React.useState(false)
@@ -74,6 +76,11 @@ function App() {
   // Handle the toggle for the RegisterModal
   const handleRegisterModalToggleOpen = () => {
     setIsRegisterFormOpen((prevs) => !prevs)
+  }
+
+  // Handle the toggle for the LoginModal
+  const handleLoginModalToggleOpen = () => {
+    setIsLoginFormOpen((prevs) => !prevs)
   }
 
   // Handle the toggle for the ItemModal
@@ -128,7 +135,25 @@ function App() {
       .register(name, avatar, email, password)
       .then((res) => {
         if (res) {
-          setIsRegisterFormOpen((prevs) => !prevs)
+          handleRegisterModalToggleOpen()
+          setLoggedIn(true)
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading((prev) => !prev)
+      })
+  }
+
+  // Handle Login and set the JWT token
+  const handleLogin = ({ email, password }) => {
+    setIsLoading((prev) => !prev)
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          handleLoginModalToggleOpen()
+          localStorage.setItem('jwt', JSON.stringify(data.token))
           setLoggedIn(true)
         }
       })
@@ -153,6 +178,7 @@ function App() {
             handleFormToggleOpen,
             handleItemModalToggleOpen,
             handleRegisterModalToggleOpen,
+            handleLoginModalToggleOpen,
             loggedIn,
           }}
         >
@@ -193,6 +219,15 @@ function App() {
               handleRegister={handleRegister}
             />
           )}
+          {isLoginFormOpen && (
+            <LoginModal
+              isLoading={isLoading}
+              isLoginFormOpen={isLoginFormOpen}
+              handleLoginModalToggleOpen={handleLoginModalToggleOpen}
+              handleLogin={handleLogin}
+            />
+          )}
+
           {isDeleteModalOpen && (
             <DeleteConfirmationModal
               isLoading={isLoading}
@@ -209,4 +244,4 @@ function App() {
   )
 }
 
-export default withRouter(App)
+export default App
