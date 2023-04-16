@@ -6,6 +6,7 @@ const RegisterModal = ({
   isLoading,
   handleRegisterModalToggleOpen,
   isRegisterFormOpen,
+  handleRegister,
 }) => {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
@@ -39,16 +40,15 @@ const RegisterModal = ({
   // Handle submit button click
   const handleSubmit = (e) => {
     e.preventDefault()
-    // onAddItem(values)
-    // resetForm()
-    console.log('Regitered!')
+    handleRegister(values)
+    resetForm()
   }
 
   return (
     <ModalWithForm
       title="Sign up"
       name="register"
-      buttonText={isLoading ? 'Saving...' : 'Next'}
+      buttonText={isLoading ? 'Registering...' : 'Next'}
       handleFormToggleOpen={handleRegisterModalToggleOpen}
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}
@@ -116,21 +116,21 @@ const RegisterModal = ({
       </fieldset>
       <fieldset className="form__fieldset">
         <label
-          htmlFor="avatarurl"
-          className={errors.avatarurl ? 'form__label_error' : 'form__label'}
+          htmlFor="avatar"
+          className={errors.avatar ? 'form__label_error' : 'form__label'}
         >
-          {errors.avatarurl ? `Avatar URL: (${errors.avatarurl})` : 'Avatar URL: '}
+          {errors.avatar ? `Avatar URL: (${errors.avatar})` : 'Avatar URL: '}
         </label>
         <input
-          className={`form__input ${errors.avatarurl && 'form__input-error'}`}
-          id="avatarurl"
-          name="avatarurl"
+          className={`form__input ${errors.avatar && 'form__input-error'}`}
+          id="avatar"
+          name="avatar"
           type="url"
           placeholder="Avatar URL"
           required
           minLength="2"
           maxLength="30"
-          value={values.avatarurl || ''}
+          value={values.avatar || ''}
           onChange={handleChange}
         />
       </fieldset>

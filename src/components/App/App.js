@@ -21,6 +21,7 @@ import {
   weatherDataProcesing,
 } from '../../utils/weatherApi'
 import ProtectedRoute from '../ProtectedRoute'
+import auth from '../../auth'
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({})
@@ -117,6 +118,23 @@ function App() {
       })
   }
 
+  // Handle Register
+  const handleRegister = ({ name, avatar, email, password }) => {
+    setIsLoading((prev) => !prev)
+    auth
+      .register(name, avatar, email, password)
+      .then((res) => {
+        if (res) {
+          setIsRegisterFormOpen((prevs) => !prevs)
+          setLoggedIn(true)
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading((prev) => !prev)
+      })
+  }
+
   return (
     <div className="page">
       <div className="page__container">
@@ -169,6 +187,7 @@ function App() {
               isLoading={isLoading}
               isRegisterFormOpen={isRegisterFormOpen}
               handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
+              handleRegister={handleRegister}
             />
           )}
           {isDeleteModalOpen && (
