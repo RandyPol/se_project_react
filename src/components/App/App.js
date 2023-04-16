@@ -1,6 +1,6 @@
 import React from 'react'
 // Import the routing components from react-router-dom
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import './App.css'
 
 // Components
@@ -19,6 +19,7 @@ import {
   requestWeatherApiData,
   weatherDataProcesing,
 } from '../../utils/weatherApi'
+import ProtectedRoute from '../ProtectedRoute'
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({})
@@ -26,6 +27,9 @@ function App() {
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
+
+  // Login state
+  const [loggedIn, setLoggedIn] = React.useState(false)
 
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
   // Clothing items from the api
@@ -124,11 +128,13 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/">
-              <Main />
+              {loggedIn ? <Main /> : <Redirect to="/login" />}
             </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
+            <ProtectedRoute
+              path="/profile"
+              component={Profile}
+              loggedIn={loggedIn}
+            />
           </Switch>
 
           <Footer />
@@ -163,4 +169,4 @@ function App() {
   )
 }
 
-export default App
+export default withRouter(App)
