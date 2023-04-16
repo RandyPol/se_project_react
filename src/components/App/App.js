@@ -42,6 +42,18 @@ function App() {
   // Card item info for the Card that was clicked to open the ItemModal
   const [cardItem, setCardItem] = React.useState({})
 
+  // Check for token in local storage and set loggedIn state
+  React.useEffect(() => {
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      setLoggedIn(true)
+      auth
+        .checkToken(JSON.parse(token))
+        .then((userData) => console.log(userData))
+        .catch((error) => console.error(error))
+    }
+  }, [])
+
   // Api call to get the weather data from the weather api (on mount only once)
   React.useEffect(() => {
     requestWeatherApiData()

@@ -42,7 +42,7 @@ const register = (name, avatar, email, password) => {
  *
  * */
 
-const authorize = ( email, password ) => {
+const authorize = (email, password) => {
   return request(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
@@ -55,9 +55,20 @@ const authorize = ( email, password ) => {
   })
 }
 
+const checkToken = (token) => {
+  return request(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  })
+}
+
 const auth = {
   register,
   authorize,
+  checkToken,
 }
 
 export default auth
