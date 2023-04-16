@@ -12,6 +12,7 @@ const Header = () => {
     weatherData,
     handleFormToggleOpen,
     handleRegisterModalToggleOpen,
+    handleLoginModalToggleOpen,
     loggedIn,
   } = React.useContext(CurrentTemperatureUnitContext)
 
@@ -56,7 +57,7 @@ const Header = () => {
           </button>
           <button
             className="header__button-LogIn"
-            onClick={handleFormToggleOpen}
+            onClick={handleLoginModalToggleOpen}
           >
             Log In
           </button>
