@@ -33,7 +33,7 @@ const ClothesSection = () => {
       <ul className="clothessection__card-list">
         {filteredClothingItems.map((item) => (
           <ListItemCard
-            key={item.id}
+            key={item._id}
             item={item}
             weather={weatherData.tempDescription}
             handleItemModalToggleOpen={handleItemModalToggleOpen}

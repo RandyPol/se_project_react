@@ -31,7 +31,7 @@ const Main = () => {
         <ul className="main__card-list">
           {filterClothes.map((item) => (
             <ListItemCard
-              key={item.id}
+              key={item._id}
               item={item}
               weather={weatherData.tempDescription}
               handleItemModalToggleOpen={handleItemModalToggleOpen}
