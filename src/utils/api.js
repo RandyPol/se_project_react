@@ -9,7 +9,6 @@ const checkResponse = (res) => {
 // Standar fetch request with the authorization header added
 const request = (url, options) => {
   const token = JSON.parse(localStorage.getItem('jwt'))
-  console.log('token', token)
   if (
     token &&
     !url.includes('/signin') &&

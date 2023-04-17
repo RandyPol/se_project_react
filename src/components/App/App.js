@@ -95,8 +95,8 @@ function App() {
   }
 
   // Handle the toggle for the LoginModal
-  const handleLoginModalToggleOpen = () => {
-    setIsLoginFormOpen((prevs) => !prevs)
+  const handleLoginModalToggleOpen = (status = true) => {
+    if (status) setIsLoginFormOpen((prevs) => !prevs)
   }
 
   // Handle the toggle for the ItemModal
@@ -149,10 +149,10 @@ function App() {
     setIsLoading((prev) => !prev)
     auth
       .register(name, avatar, email, password)
-      .then((res) => {
-        if (res) {
+      .then((data) => {
+        if (data) {
           handleRegisterModalToggleOpen()
-          setLoggedIn(true)
+          handleLogin({ email, password }, false)
         }
       })
       .catch((err) => console.log(err))
@@ -162,13 +162,13 @@ function App() {
   }
 
   // Handle Login and set the JWT token
-  const handleLogin = ({ email, password }) => {
+  const handleLogin = ({ email, password }, close = true) => {
     setIsLoading((prev) => !prev)
     auth
       .authorize(email, password)
       .then((data) => {
         if (data.token) {
-          handleLoginModalToggleOpen()
+          handleLoginModalToggleOpen(close)
           localStorage.setItem('jwt', JSON.stringify(data.token))
           setLoggedIn(true)
         }
