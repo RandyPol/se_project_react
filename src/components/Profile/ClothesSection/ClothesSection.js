@@ -3,6 +3,7 @@ import './ClothesSection.css'
 import ListItemCard from '../../Main/ItemCard/ListItemCard'
 // Import the context value
 import CurrentTemperatureUnitContext from '../../../contexts/CurrentTemperatureUnitContext'
+import CurrentUserContext from '../../../contexts/CurrentUserContext'
 const ClothesSection = () => {
   const {
     weatherData,
@@ -10,6 +11,14 @@ const ClothesSection = () => {
     clothingItems,
     handleItemModalToggleOpen,
   } = React.useContext(CurrentTemperatureUnitContext)
+  // Get the current user from the context
+  const currentUser = React.useContext(CurrentUserContext)
+
+  // Filter the clothing items by the current user
+  const filteredClothingItems = clothingItems.filter(
+    (item) => item.owner === currentUser._id
+  )
+
   return (
     <div className="clothessection">
       <div className="clothessection__title-container">
@@ -22,7 +31,7 @@ const ClothesSection = () => {
         </button>
       </div>
       <ul className="clothessection__card-list">
-        {clothingItems.map((item) => (
+        {filteredClothingItems.map((item) => (
           <ListItemCard
             key={item.id}
             item={item}
