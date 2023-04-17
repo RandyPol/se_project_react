@@ -111,7 +111,7 @@ function App() {
   // Add a new clothing item to the server
   const handleAddItemSubmit = (newItem) => {
     setIsLoading((prev) => !prev)
-   return  api
+    return api
       .postClothingItem(newItem)
       .then((addedData) => {
         setClothingItems([addedData, ...clothingItems])

@@ -12,6 +12,7 @@ const Main = () => {
     clothingItems,
     handleItemModalToggleOpen,
   } = React.useContext(CurrentTemperatureUnitContext)
+
   const filterClothes = clothingItems.filter(
     (item) => item.weather === weatherData.tempDescription
   )
