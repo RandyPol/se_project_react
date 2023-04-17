@@ -17,6 +17,17 @@
   margin-right: 16px;
 }
 
+.sidebar__profile-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.25;
+  color: #000;
+}
+
 .sidebar__username {
   width: 157px;
   margin: 0;
