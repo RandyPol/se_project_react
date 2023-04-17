@@ -4,7 +4,8 @@ import CurrentUserContext from '../../../contexts/CurrentUserContext'
 
 const SideBar = () => {
   // Get the current user from the context
-  const { currentUser, handleLogout } = React.useContext(CurrentUserContext)
+  const { currentUser, handleLogout, handleProfileEditModalToggleOpen } =
+    React.useContext(CurrentUserContext)
   // Get user initials
   const getUserInitial = () => {
     const name = currentUser.name
@@ -28,7 +29,7 @@ const SideBar = () => {
       </div>
       <button
         className="sidebar__button-editProfile "
-        onClick={() => console.log('Change profile data')}
+        onClick={handleProfileEditModalToggleOpen}
       >
         Change profile data
       </button>
