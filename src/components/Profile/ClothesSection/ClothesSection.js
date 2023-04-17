@@ -12,7 +12,7 @@ const ClothesSection = () => {
     handleItemModalToggleOpen,
   } = React.useContext(CurrentTemperatureUnitContext)
   // Get the current user from the context
-  const currentUser = React.useContext(CurrentUserContext)
+  const { currentUser } = React.useContext(CurrentUserContext)
 
   // Filter the clothing items by the current user
   const filteredClothingItems = clothingItems.filter(

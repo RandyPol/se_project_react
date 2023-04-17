@@ -10,7 +10,7 @@ const ItemModal = ({
   handleDeleteModalToggleOpen,
 }) => {
   const { isItemModalOpen } = React.useContext(CurrentTemperatureUnitContext)
-  const currentUser = React.useContext(CurrentUserContext)
+  const {currentUser} = React.useContext(CurrentUserContext)
   // Checking if the current user is the owner of the current clothing item
   const isOwn = cardItem.owner === currentUser._id
   // Creating a variable which set in `className` for the delete button

@@ -17,7 +17,7 @@ const Header = () => {
   } = React.useContext(CurrentTemperatureUnitContext)
 
   // Get the current user from the context
-  const currentUser = React.useContext(CurrentUserContext)
+  const { currentUser } = React.useContext(CurrentUserContext)
 
   // Get user initials
   const getUserInitial = () => {
