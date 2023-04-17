@@ -144,3 +144,25 @@
 
   color: #ffffff;
 }
+
+.form__submit-orButton {
+  margin-top: 32px;
+  margin-left: 12px;
+  padding: 0;
+  width: 100px;
+  height: 36px;
+  border: 0;
+  background: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: left;
+
+  color: rgba(0, 0, 0, 0.5);
+}
