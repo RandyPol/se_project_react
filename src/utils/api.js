@@ -73,10 +73,32 @@ const deleteClothesItem = (id) => {
   })
 }
 
+/**
+ * Update user profile data on the server
+ * @param {String} name - The name of the user
+ * @param {String} avatar - The avatar of the user
+ * @returns {Promise} Promise object represents the result of updating the user profile data on the server
+ *
+ */
+
+const updateProfile = (name, avatar) => {
+  return request(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  })
+}
+
 const api = {
   getInitialClothingItems,
   postClothingItem,
   deleteClothesItem,
+  updateProfile,
 }
 
 export default api
