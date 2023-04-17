@@ -205,6 +205,31 @@ function App() {
       })
   }
 
+  // Handle card like
+  const handleCardLike = (id, isLiked) => {
+    isLiked
+      ? api
+          .removeCardLike(id)
+          .then((updatedCard) => {
+            console.log(updatedCard)
+            const newCards = clothingItems.map((c) =>
+              c._id === id ? updatedCard : c
+            )
+            setClothingItems(newCards)
+          })
+          .catch((err) => console.log(err))
+      : api
+          .addCardLike(id)
+          .then((updatedCard) => {
+            console.log(updatedCard)
+            const newCards = clothingItems.map((c) =>
+              c._id === id ? updatedCard : c
+            )
+            setClothingItems(newCards)
+          })
+          .catch((err) => console.log(err))
+  }
+
   // Handle Logout and remove the JWT token
   const handleLogout = () => {
     localStorage.removeItem('jwt')
@@ -232,6 +257,7 @@ function App() {
               handleRegisterModalToggleOpen,
               handleLoginModalToggleOpen,
               loggedIn,
+              handleCardLike,
             }}
           >
             <Header />

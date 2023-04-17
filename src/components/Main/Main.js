@@ -11,6 +11,7 @@ const Main = () => {
     isTempFahrenheit,
     clothingItems,
     handleItemModalToggleOpen,
+    handleCardLike,
   } = React.useContext(CurrentTemperatureUnitContext)
 
   const filterClothes = clothingItems.filter(
@@ -35,6 +36,7 @@ const Main = () => {
               item={item}
               weather={weatherData.tempDescription}
               handleItemModalToggleOpen={handleItemModalToggleOpen}
+              onCardLike={handleCardLike}
             />
           ))}
         </ul>
