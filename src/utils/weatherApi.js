@@ -23,12 +23,13 @@ const ferToCel = (fer) => {
 export const weatherDataProcesing = (weatherData) => {
   // Desctructuring the data from the API
   const {
-    main: { temp },
+    main: { temp: rawTemp },
     name,
     weather: [{ main }],
     sys: { sunrise, sunset },
   } = weatherData
 
+  const temp = Math.floor(rawTemp)
   const currentTime = Date.now()
   const timeOfDay =
     currentTime >= sunrise * 1000 && currentTime < sunset * 1000
@@ -37,7 +38,7 @@ export const weatherDataProcesing = (weatherData) => {
 
   // Creating the object with the data we need
   const weather = {
-    temp: Math.floor(temp),
+    temp,
     tempCel: ferToCel(temp),
     name,
     main,
