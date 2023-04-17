@@ -12,18 +12,32 @@ const SideBar = () => {
   }
   return (
     <div className="sidebar profile__sidebar">
-      {currentUser.avatar ? (
-        <img
-          src={currentUser.avatar}
-          className="sidebar__profile-avatar"
-          alt="Profile avatar"
-        />
-      ) : (
-        <div className="sidebar__profile-avatar sidebar__profile-initials">
-          {getUserInitial()}
-        </div>
-      )}
-      <p className="sidebar__username">{currentUser.name}</p>
+      <div className="sidebar__userContainer ">
+        {currentUser.avatar ? (
+          <img
+            src={currentUser.avatar}
+            className="sidebar__profile-avatar"
+            alt="Profile avatar"
+          />
+        ) : (
+          <div className="sidebar__profile-avatar sidebar__profile-initials">
+            {getUserInitial()}
+          </div>
+        )}
+        <p className="sidebar__username">{currentUser.name}</p>
+      </div>
+      <button
+        className="sidebar__button-editProfile "
+        onClick={() => console.log('Change profile data')}
+      >
+        Change profile data
+      </button>
+      <button
+        className="sidebar__button-logOut"
+        onClick={() => console.log('Log out')}
+      >
+        Log out
+      </button>
     </div>
   )
 }
