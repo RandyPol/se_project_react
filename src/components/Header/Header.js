@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import logo from '../../images/Logo.svg'
-import avatar from '../../images/avatar.avif'
 import ToggleSwitch from './ToggleSwitch/ToggleSwitch'
 // Import the context value
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
+import CurrentUserContext from '../../contexts/CurrentUserContext'
 
 const Header = () => {
   const {
@@ -15,6 +15,15 @@ const Header = () => {
     handleLoginModalToggleOpen,
     loggedIn,
   } = React.useContext(CurrentTemperatureUnitContext)
+
+  // Get the current user from the context
+  const currentUser = React.useContext(CurrentUserContext)
+
+  // Get user initials
+  const getUserInitial = () => {
+    const name = currentUser.name
+    if (name) return name.charAt(0).toUpperCase()
+  }
 
   const currentDate = new Date().toLocaleString('default', {
     month: 'long',
@@ -38,12 +47,18 @@ const Header = () => {
           </button>
           <Link to="/profile" className="header__profile-link">
             <div className="header__user-container">
-              <p className="header__username">Michael Jordan</p>
-              <img
-                src={avatar}
-                className="header__profile-avatar"
-                alt="Profile avatar"
-              />
+              <p className="header__username">{currentUser.name}</p>
+              {currentUser.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  className="header__profile-avatar"
+                  alt="Profile avatar"
+                />
+              ) : (
+                <div className="header__profile-avatar header__profile-avatar--initials">
+                  {getUserInitial()}
+                </div>
+              )}
             </div>
           </Link>
         </>

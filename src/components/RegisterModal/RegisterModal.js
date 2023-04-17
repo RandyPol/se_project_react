@@ -105,8 +105,6 @@ const RegisterModal = ({
           type="url"
           placeholder="Avatar URL"
           required
-          minLength="2"
-          maxLength="30"
           value={values.avatar || ''}
           onChange={handleChange}
         />
