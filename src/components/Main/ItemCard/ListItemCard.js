@@ -18,10 +18,13 @@ const ItemCard = ({ item, handleItemModalToggleOpen, onCardLike }) => {
     <li className="card">
       <div className="card__title-container">
         <h3 className="card__title">{item.name}</h3>
-        <HeartIcon
-          className={isLiked ? 'card__heart' : ''}
-          onClick={handleLikeClick}
-        />
+
+        {currentUser._id && (
+          <HeartIcon
+            className={isLiked ? 'card__heart' : ''}
+            onClick={handleLikeClick}
+          />
+        )}
       </div>
 
       <img

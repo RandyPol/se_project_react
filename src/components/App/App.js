@@ -211,7 +211,6 @@ function App() {
       ? api
           .removeCardLike(id)
           .then((updatedCard) => {
-            console.log(updatedCard)
             const newCards = clothingItems.map((c) =>
               c._id === id ? updatedCard : c
             )
@@ -221,7 +220,6 @@ function App() {
       : api
           .addCardLike(id)
           .then((updatedCard) => {
-            console.log(updatedCard)
             const newCards = clothingItems.map((c) =>
               c._id === id ? updatedCard : c
             )
