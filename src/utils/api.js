@@ -94,11 +94,44 @@ const updateProfile = (name, avatar) => {
   })
 }
 
+/**
+ * Add card likes to the server
+ * @param {String} id - The id of the card to be liked
+ * @returns {Promise} Promise object represents the result of adding the card like to the server
+ */
+
+const addCardLike = (id) => {
+  return request(`${BASE_URL}/items/${id}/likes`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
+/**
+ * Remove card likes from the server
+ * @param {String} id - The id of the card to be unliked
+ * @retuns {Promise} Promise object represents the result of removing the card like from the server
+ *
+ */
+
+const removeCardLike = (id) => {
+  return request(`${BASE_URL}/items/${id}/likes`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
 const api = {
   getInitialClothingItems,
   postClothingItem,
   deleteClothesItem,
   updateProfile,
+  addCardLike,
+  removeCardLike,
 }
 
 export default api
