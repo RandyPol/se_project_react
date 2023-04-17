@@ -6,8 +6,18 @@ const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
 }
 
-// Standar fetch request
+// Standar fetch request with the authorization header added
 const request = (url, options) => {
+  const token = JSON.parse(localStorage.getItem('jwt'))
+  console.log('token', token)
+  if (
+    token &&
+    !url.includes('/signin') &&
+    !url.includes('/signup') &&
+    !(url.includes('/items') && options.method === 'GET')
+  ) {
+    options.headers.Authorization = `Bearer ${token}`
+  }
   return fetch(url, options).then(checkResponse)
 }
 
