@@ -4,7 +4,7 @@ import CurrentUserContext from '../../../contexts/CurrentUserContext'
 
 const SideBar = () => {
   // Get the current user from the context
-  const currentUser = React.useContext(CurrentUserContext)
+  const { currentUser, handleLogout } = React.useContext(CurrentUserContext)
   // Get user initials
   const getUserInitial = () => {
     const name = currentUser.name
@@ -32,10 +32,7 @@ const SideBar = () => {
       >
         Change profile data
       </button>
-      <button
-        className="sidebar__button-logOut"
-        onClick={() => console.log('Log out')}
-      >
+      <button className="sidebar__button-logOut" onClick={handleLogout}>
         Log out
       </button>
     </div>

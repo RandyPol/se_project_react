@@ -172,6 +172,7 @@ function App() {
         if (data.token) {
           handleLoginModalToggleOpen(close)
           localStorage.setItem('jwt', JSON.stringify(data.token))
+          setCurrentUser(data.user)
           setLoggedIn(true)
         }
       })
@@ -181,8 +182,15 @@ function App() {
       })
   }
 
+  // Handle Logout and remove the JWT token
+  const handleLogout = () => {
+    localStorage.removeItem('jwt')
+    setLoggedIn(false)
+    setCurrentUser({})
+  }
+
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser, handleLogout }}>
       <div className="page">
         <div className="page__container">
           <CurrentTemperatureUnitContext.Provider
