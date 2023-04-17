@@ -50,10 +50,12 @@ function App() {
   React.useEffect(() => {
     const token = localStorage.getItem('jwt')
     if (token) {
-      setLoggedIn(true)
       auth
         .checkToken(JSON.parse(token))
-        .then((userData) => setCurrentUser(userData))
+        .then((userData) => {
+          setCurrentUser(userData)
+          setLoggedIn(true)
+        })
         .catch((error) => console.error(error))
     }
   }, [])
