@@ -6,6 +6,7 @@ function LoginModal({
   isLoading,
   isLoginFormOpen,
   handleLoginModalToggleOpen,
+  handleRegisterModalToggleOpen,
   handleLogin,
 }) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -20,6 +21,13 @@ function LoginModal({
     handleLogin(values)
     resetForm()
   }
+
+  // Handle register button click
+  const handleRegisterClick = () => {
+    handleLoginModalToggleOpen()
+    handleRegisterModalToggleOpen()
+  }
+
   return (
     <ModalWithForm
       title="Log in"
@@ -27,6 +35,7 @@ function LoginModal({
       buttonText={isLoading ? 'Logging in...' : 'Log in'}
       handleFormToggleOpen={handleLoginModalToggleOpen}
       handleSubmit={handleSubmit}
+      handleOrButtonClick={handleRegisterClick}
       isSubmitDisabled={isSubmitDisabled}
       isOpen={isLoginFormOpen}
     >
