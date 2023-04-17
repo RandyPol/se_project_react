@@ -15,6 +15,7 @@ import RegisterModal from '../RegisterModal/RegisterModal'
 import LoginModal from '../LoginModal/LoginModal'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
+import CurrentUserContext from '../../contexts/CurrentUserContext'
 // Utils and constants
 import api from '../../utils/api'
 import {
@@ -36,6 +37,9 @@ function App() {
   // Login state
   const [loggedIn, setLoggedIn] = React.useState(false)
 
+  // Current user state
+  const [currentUser, setCurrentUser] = React.useState({})
+
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
   // Clothing items from the api
   const [clothingItems, setClothingItems] = React.useState([])
@@ -49,7 +53,7 @@ function App() {
       setLoggedIn(true)
       auth
         .checkToken(JSON.parse(token))
-        .then((userData) => console.log(userData))
+        .then((userData) => setCurrentUser(userData))
         .catch((error) => console.error(error))
     }
   }, [])
@@ -176,83 +180,85 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <div className="page__container">
-        <CurrentTemperatureUnitContext.Provider
-          value={{
-            isModalFormOpen,
-            isItemModalOpen,
-            isDeleteModalOpen,
-            weatherData,
-            clothingItems,
-            isTempFahrenheit,
-            handleTempUnitToggle,
-            handleFormToggleOpen,
-            handleItemModalToggleOpen,
-            handleRegisterModalToggleOpen,
-            handleLoginModalToggleOpen,
-            loggedIn,
-          }}
-        >
-          <Header />
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <ProtectedRoute
-              path="/profile"
-              component={Profile}
-              loggedIn={loggedIn}
-            />
-          </Switch>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <div className="page__container">
+          <CurrentTemperatureUnitContext.Provider
+            value={{
+              isModalFormOpen,
+              isItemModalOpen,
+              isDeleteModalOpen,
+              weatherData,
+              clothingItems,
+              isTempFahrenheit,
+              handleTempUnitToggle,
+              handleFormToggleOpen,
+              handleItemModalToggleOpen,
+              handleRegisterModalToggleOpen,
+              handleLoginModalToggleOpen,
+              loggedIn,
+            }}
+          >
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Main />
+              </Route>
+              <ProtectedRoute
+                path="/profile"
+                component={Profile}
+                loggedIn={loggedIn}
+              />
+            </Switch>
 
-          <Footer />
-          {isModalFormOpen && (
-            <AddItemModal
-              isModalFormOpen={isModalFormOpen}
-              isLoading={isLoading}
-              onAddItem={handleAddItemSubmit}
-              handleFormToggleOpen={handleFormToggleOpen}
-            />
-          )}
-          {isItemModalOpen && (
-            <ItemModal
-              handleItemModalToggleOpen={handleItemModalToggleOpen}
-              name={'image'}
-              cardItem={cardItem}
-              handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
-            />
-          )}
-          {isRegisterFormOpen && (
-            <RegisterModal
-              isLoading={isLoading}
-              isRegisterFormOpen={isRegisterFormOpen}
-              handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
-              handleRegister={handleRegister}
-            />
-          )}
-          {isLoginFormOpen && (
-            <LoginModal
-              isLoading={isLoading}
-              isLoginFormOpen={isLoginFormOpen}
-              handleLoginModalToggleOpen={handleLoginModalToggleOpen}
-              handleLogin={handleLogin}
-            />
-          )}
+            <Footer />
+            {isModalFormOpen && (
+              <AddItemModal
+                isModalFormOpen={isModalFormOpen}
+                isLoading={isLoading}
+                onAddItem={handleAddItemSubmit}
+                handleFormToggleOpen={handleFormToggleOpen}
+              />
+            )}
+            {isItemModalOpen && (
+              <ItemModal
+                handleItemModalToggleOpen={handleItemModalToggleOpen}
+                name={'image'}
+                cardItem={cardItem}
+                handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
+              />
+            )}
+            {isRegisterFormOpen && (
+              <RegisterModal
+                isLoading={isLoading}
+                isRegisterFormOpen={isRegisterFormOpen}
+                handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
+                handleRegister={handleRegister}
+              />
+            )}
+            {isLoginFormOpen && (
+              <LoginModal
+                isLoading={isLoading}
+                isLoginFormOpen={isLoginFormOpen}
+                handleLoginModalToggleOpen={handleLoginModalToggleOpen}
+                handleLogin={handleLogin}
+              />
+            )}
 
-          {isDeleteModalOpen && (
-            <DeleteConfirmationModal
-              isLoading={isLoading}
-              isDeleteModalOpen={isDeleteModalOpen}
-              name={'deleteConfirmation'}
-              cardItem={cardItem}
-              handleCardDelete={handleCardDelete}
-              handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
-            />
-          )}
-        </CurrentTemperatureUnitContext.Provider>
+            {isDeleteModalOpen && (
+              <DeleteConfirmationModal
+                isLoading={isLoading}
+                isDeleteModalOpen={isDeleteModalOpen}
+                name={'deleteConfirmation'}
+                cardItem={cardItem}
+                handleCardDelete={handleCardDelete}
+                handleDeleteModalToggleOpen={handleDeleteModalToggleOpen}
+              />
+            )}
+          </CurrentTemperatureUnitContext.Provider>
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   )
 }
 
