@@ -50,3 +50,11 @@
   background: none;
   cursor: pointer;
 }
+
+.modal__delete-button_visible {
+  display: block;
+}
+
+.modal__delete-button_hidden {
+  display: none;
+}
