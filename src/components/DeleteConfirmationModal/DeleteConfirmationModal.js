@@ -13,7 +13,7 @@ const DeleteConfirmationModal = ({
   // Handle click for delete button to open confirmation modal and
   // close item modal
   const handleDeleteButtonClick = () => {
-    handleCardDelete(cardItem.id)
+    handleCardDelete(cardItem._id)
   }
 
   return (

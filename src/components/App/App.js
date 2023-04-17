@@ -135,7 +135,7 @@ function App() {
       .deleteClothesItem(id)
       .then(() => {
         const newClothingItems = clothingItems.filter((item) => {
-          return item.id !== id
+          return item._id !== id
         })
         setClothingItems(newClothingItems)
         handleDeleteModalToggleOpen()
