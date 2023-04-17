@@ -5,6 +5,7 @@ import { useFormAndValidation } from '../../hook/useFormAndValidation'
 const RegisterModal = ({
   isLoading,
   handleRegisterModalToggleOpen,
+  handleLoginModalToggleOpen,
   isRegisterFormOpen,
   handleRegister,
 }) => {
@@ -21,6 +22,12 @@ const RegisterModal = ({
     resetForm()
   }
 
+  // Handle login button click
+  const handleLoginClick = () => {
+    handleRegisterModalToggleOpen()
+    handleLoginModalToggleOpen()
+  }
+
   return (
     <ModalWithForm
       title="Sign up"
@@ -28,6 +35,7 @@ const RegisterModal = ({
       buttonText={isLoading ? 'Registering...' : 'Next'}
       handleFormToggleOpen={handleRegisterModalToggleOpen}
       handleSubmit={handleSubmit}
+      handleOrButtonClick={handleLoginClick}
       isSubmitDisabled={isSubmitDisabled}
       isOpen={isRegisterFormOpen}
     >

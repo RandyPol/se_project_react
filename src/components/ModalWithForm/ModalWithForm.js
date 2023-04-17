@@ -11,6 +11,7 @@ const ModalWithForm = ({
   children,
   handleSubmit,
   isSubmitDisabled,
+  handleOrButtonClick,
   isOpen,
 }) => {
   const { currentUser } = React.useContext(CurrentUserContext)
@@ -49,7 +50,11 @@ const ModalWithForm = ({
               >
                 {buttonText}
               </button>
-              <button type="button" className="form__submit-orButton">
+              <button
+                type="button"
+                className="form__submit-orButton"
+                onClick={handleOrButtonClick}
+              >
                 {buttonText === 'Next' ? 'or Log in' : 'or Register'}
               </button>
             </div>
