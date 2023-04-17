@@ -12,10 +12,16 @@
   box-sizing: border-box;
 }
 
-.card__title {
+.card__title-container {
   position: absolute;
   top: 15px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.card__title {
   padding: 2px 12px;
   background: #ffffff;
   border-radius: 4px;
@@ -27,6 +33,11 @@
   line-height: 1.25;
 
   color: rgba(0, 0, 0, 0.6);
+}
+
+/* .card__heart{} works as well */
+.card__heart path {
+  fill: black;
 }
 
 .card__image {
