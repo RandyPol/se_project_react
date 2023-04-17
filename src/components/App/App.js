@@ -13,6 +13,7 @@ import AddItemModal from '../AddItemModal/AddItemModal'
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal'
 import RegisterModal from '../RegisterModal/RegisterModal'
 import LoginModal from '../LoginModal/LoginModal'
+import EditProfileModal from '../EditProfileModal/EditProfileModal'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 import CurrentUserContext from '../../contexts/CurrentUserContext'
@@ -33,6 +34,8 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [isRegisterFormOpen, setIsRegisterFormOpen] = React.useState(false)
   const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
+  const [isProfileEditFormOpen, setIsProfileEditFormOpen] =
+    React.useState(false)
 
   // Login state
   const [loggedIn, setLoggedIn] = React.useState(false)
@@ -99,6 +102,11 @@ function App() {
   // Handle the toggle for the LoginModal
   const handleLoginModalToggleOpen = (status = true) => {
     if (status) setIsLoginFormOpen((prevs) => !prevs)
+  }
+
+  // Handle the toggle for the ProfileEditModal
+  const handleProfileEditModalToggleOpen = () => {
+    setIsProfileEditFormOpen((prevs) => !prevs)
   }
 
   // Handle the toggle for the ItemModal
@@ -182,6 +190,21 @@ function App() {
       })
   }
 
+  // Handle Profile Edit and update the user info
+  const handleProfileEdit = ({ name, avatar }) => {
+    setIsLoading((prev) => !prev)
+    api
+      .updateProfile(name, avatar)
+      .then((data) => {
+        setCurrentUser(data)
+        handleProfileEditModalToggleOpen()
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading((prev) => !prev)
+      })
+  }
+
   // Handle Logout and remove the JWT token
   const handleLogout = () => {
     localStorage.removeItem('jwt')
@@ -190,7 +213,9 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, handleLogout }}>
+    <CurrentUserContext.Provider
+      value={{ currentUser, handleLogout, handleProfileEditModalToggleOpen }}
+    >
       <div className="page">
         <div className="page__container">
           <CurrentTemperatureUnitContext.Provider
@@ -254,6 +279,16 @@ function App() {
                 handleLoginModalToggleOpen={handleLoginModalToggleOpen}
                 handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
                 handleLogin={handleLogin}
+              />
+            )}
+            {isProfileEditFormOpen && (
+              <EditProfileModal
+                isLoading={isLoading}
+                isProfileEditFormOpen={isProfileEditFormOpen}
+                handleProfileEditModalToggleOpen={
+                  handleProfileEditModalToggleOpen
+                }
+                handleProfileEdit={handleProfileEdit}
               />
             )}
 
