@@ -243,6 +243,7 @@ function App() {
                 isLoading={isLoading}
                 isRegisterFormOpen={isRegisterFormOpen}
                 handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
+                handleLoginModalToggleOpen={handleLoginModalToggleOpen}
                 handleRegister={handleRegister}
               />
             )}
@@ -251,6 +252,7 @@ function App() {
                 isLoading={isLoading}
                 isLoginFormOpen={isLoginFormOpen}
                 handleLoginModalToggleOpen={handleLoginModalToggleOpen}
+                handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
                 handleLogin={handleLogin}
               />
             )}
