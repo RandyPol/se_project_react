@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/se_project_react/static/css/main.1acbd177.css",
-    "main.js": "/se_project_react/static/js/main.c02bc68e.js",
+    "main.css": "/se_project_react/static/css/main.e9174464.css",
+    "main.js": "/se_project_react/static/js/main.00b521db.js",
     "static/js/648.f75f8a24.chunk.js": "/se_project_react/static/js/648.f75f8a24.chunk.js",
     "static/js/301.5e485ecb.chunk.js": "/se_project_react/static/js/301.5e485ecb.chunk.js",
     "static/js/135.858b3d6c.chunk.js": "/se_project_react/static/js/135.858b3d6c.chunk.js",
@@ -15,7 +15,6 @@
     "static/js/50.db12d06a.chunk.js": "/se_project_react/static/js/50.db12d06a.chunk.js",
     "static/js/791.a11e5aab.chunk.js": "/se_project_react/static/js/791.a11e5aab.chunk.js",
     "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
-    "static/media/avatar.avif": "/se_project_react/static/media/avatar.377f4f10c0a34538bf6e.avif",
     "static/media/CabinetGrotesk-Medium.ttf": "/se_project_react/static/media/CabinetGrotesk-Medium.06e4535179580983658a.ttf",
     "static/media/CabinetGrotesk-Bold.ttf": "/se_project_react/static/media/CabinetGrotesk-Bold.049721aa3e601711db60.ttf",
     "static/media/CabinetGrotesk-Bold.woff": "/se_project_react/static/media/CabinetGrotesk-Bold.0fb1cbec860aa3537c32.woff",
@@ -31,18 +30,19 @@
     "static/media/fogDay.svg": "/se_project_react/static/media/fogDay.c61179e919859d255854.svg",
     "static/media/fogNight.svg": "/se_project_react/static/media/fogNight.f42d14bde02240dbd102.svg",
     "static/media/Logo.svg": "/se_project_react/static/media/Logo.2e52a3b54443b649938df0a9b3d231e2.svg",
+    "static/media/heart.svg": "/se_project_react/static/media/heart.13dc767d9f4d279e5b84bdfdb8a7047a.svg",
     "static/media/cloudsDay.svg": "/se_project_react/static/media/cloudsDay.aba5dd6bac18cb4d55ba.svg",
     "static/media/CloseModalIcon.svg": "/se_project_react/static/media/CloseModalIcon.5041c8cbf1275be14ac1bba3122b34f5.svg",
     "index.html": "/se_project_react/index.html",
     "static/media/cloudsNight.svg": "/se_project_react/static/media/cloudsNight.208d2d1107771d1b4a54.svg",
     "static/media/clearDay.svg": "/se_project_react/static/media/clearDay.6aea72fe5ae6b5d8dbfc.svg",
     "static/media/clearNight.svg": "/se_project_react/static/media/clearNight.b2df6a9f5dc78515a880.svg",
-    "main.1acbd177.css.map": "/se_project_react/static/css/main.1acbd177.css.map",
-    "main.c02bc68e.js.map": "/se_project_react/static/js/main.c02bc68e.js.map",
+    "main.e9174464.css.map": "/se_project_react/static/css/main.e9174464.css.map",
+    "main.00b521db.js.map": "/se_project_react/static/js/main.00b521db.js.map",
     "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1acbd177.css",
-    "static/js/main.c02bc68e.js"
+    "static/css/main.e9174464.css",
+    "static/js/main.00b521db.js"
   ]
 }
