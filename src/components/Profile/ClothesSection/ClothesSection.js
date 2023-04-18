@@ -10,6 +10,7 @@ const ClothesSection = () => {
     handleFormToggleOpen,
     clothingItems,
     handleItemModalToggleOpen,
+    handleCardLike,
   } = React.useContext(CurrentTemperatureUnitContext)
   // Get the current user from the context
   const { currentUser } = React.useContext(CurrentUserContext)
@@ -37,6 +38,7 @@ const ClothesSection = () => {
             item={item}
             weather={weatherData.tempDescription}
             handleItemModalToggleOpen={handleItemModalToggleOpen}
+            onCardLike={handleCardLike}
           />
         ))}
       </ul>
