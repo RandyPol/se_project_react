@@ -14,6 +14,7 @@ import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmati
 import RegisterModal from '../RegisterModal/RegisterModal'
 import LoginModal from '../LoginModal/LoginModal'
 import EditProfileModal from '../EditProfileModal/EditProfileModal'
+import CircularProgress from '@mui/material/CircularProgress'
 // Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 import CurrentUserContext from '../../contexts/CurrentUserContext'
@@ -39,6 +40,7 @@ function App() {
 
   // Login state
   const [loggedIn, setLoggedIn] = React.useState(false)
+  const [checkingAuth, setCheckingAuth] = React.useState(true)
 
   // Current user state
   const [currentUser, setCurrentUser] = React.useState({})
@@ -60,6 +62,9 @@ function App() {
           setLoggedIn(true)
         })
         .catch((error) => console.error(error))
+        .finally(() => setCheckingAuth(false))
+    } else {
+      setCheckingAuth(false)
     }
   }, [])
 
@@ -259,16 +264,21 @@ function App() {
             }}
           >
             <Header />
-            <Switch>
-              <Route exact path="/">
-                <Main />
-              </Route>
-              <ProtectedRoute
-                path="/profile"
-                component={Profile}
-                loggedIn={loggedIn}
-              />
-            </Switch>
+
+            {checkingAuth ? (
+              <CircularProgress />
+            ) : (
+              <Switch>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                <ProtectedRoute
+                  path="/profile"
+                  component={Profile}
+                  loggedIn={loggedIn}
+                />
+              </Switch>
+            )}
 
             <Footer />
             {isModalFormOpen && (
