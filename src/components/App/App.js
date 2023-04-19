@@ -25,7 +25,7 @@ import {
   weatherDataProcesing,
 } from '../../utils/weatherApi'
 import ProtectedRoute from '../ProtectedRoute'
-import auth from '../../auth'
+import auth from '../../utils/auth'
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({})
