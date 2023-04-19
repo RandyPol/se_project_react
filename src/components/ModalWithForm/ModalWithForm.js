@@ -6,7 +6,8 @@ import CurrentUserContext from '../../contexts/CurrentUserContext'
 const ModalWithForm = ({
   title,
   name,
-  buttonText,
+  buttonTextIsLoadingTrue,
+  buttonTextIsLoadingFalse,
   handleFormToggleOpen,
   children,
   handleSubmit,
@@ -14,8 +15,10 @@ const ModalWithForm = ({
   handleOrButtonClick,
   isOpen,
 }) => {
-  const { currentUser } = React.useContext(CurrentUserContext)
-
+  const { currentUser, isLoading } = React.useContext(CurrentUserContext)
+  const buttonText = isLoading
+    ? buttonTextIsLoadingTrue
+    : buttonTextIsLoadingFalse
   return (
     <Popup isOpen={isOpen} onClose={handleFormToggleOpen} containerName={name}>
       <form className="form" name={name} onSubmit={handleSubmit} noValidate>

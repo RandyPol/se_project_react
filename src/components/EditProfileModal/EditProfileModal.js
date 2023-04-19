@@ -3,7 +3,6 @@ import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import { useFormAndValidation } from '../../hook/useFormAndValidation'
 
 const EditProfileModal = ({
-  isLoading,
   isProfileEditFormOpen,
   handleProfileEditModalToggleOpen,
   handleProfileEdit,
@@ -24,7 +23,8 @@ const EditProfileModal = ({
     <ModalWithForm
       title="Change profile data"
       name="updataProfile"
-      buttonText={isLoading ? 'Saving...' : 'Save changes'}
+      buttonTextIsLoadingTrue="Saving..."
+      buttonTextIsLoadingFalse="Save changes"
       handleFormToggleOpen={handleProfileEditModalToggleOpen}
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}

@@ -3,7 +3,6 @@ import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import { useFormAndValidation } from '../../hook/useFormAndValidation'
 
 const AddItemModal = ({
-  isLoading,
   onAddItem,
   handleFormToggleOpen,
   isModalFormOpen,
@@ -26,7 +25,8 @@ const AddItemModal = ({
     <ModalWithForm
       title="New garment"
       name="addGarment"
-      buttonText={isLoading ? 'Saving...' : 'Add garment'}
+      buttonTextIsLoadingTrue="Saving..."
+      buttonTextIsLoadingFalse="Add garment"
       handleFormToggleOpen={handleFormToggleOpen}
       handleSubmit={handleSubmit}
       isSubmitDisabled={isSubmitDisabled}

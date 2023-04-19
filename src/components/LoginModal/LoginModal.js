@@ -3,7 +3,6 @@ import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import { useFormAndValidation } from '../../hook/useFormAndValidation'
 
 function LoginModal({
-  isLoading,
   isLoginFormOpen,
   handleLoginModalToggleOpen,
   handleRegisterModalToggleOpen,
@@ -32,7 +31,8 @@ function LoginModal({
     <ModalWithForm
       title="Log in"
       name="login"
-      buttonText={isLoading ? 'Logging in...' : 'Log in'}
+      buttonTextIsLoadingTrue="Logging in..."
+      buttonTextIsLoadingFalse="Log in"
       handleFormToggleOpen={handleLoginModalToggleOpen}
       handleSubmit={handleSubmit}
       handleOrButtonClick={handleRegisterClick}

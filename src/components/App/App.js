@@ -303,7 +303,6 @@ function App() {
             )}
             {isRegisterFormOpen && (
               <RegisterModal
-                isLoading={isLoading}
                 isRegisterFormOpen={isRegisterFormOpen}
                 handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
                 handleLoginModalToggleOpen={handleLoginModalToggleOpen}
@@ -312,7 +311,6 @@ function App() {
             )}
             {isLoginFormOpen && (
               <LoginModal
-                isLoading={isLoading}
                 isLoginFormOpen={isLoginFormOpen}
                 handleLoginModalToggleOpen={handleLoginModalToggleOpen}
                 handleRegisterModalToggleOpen={handleRegisterModalToggleOpen}
@@ -321,7 +319,6 @@ function App() {
             )}
             {isProfileEditFormOpen && (
               <EditProfileModal
-                isLoading={isLoading}
                 isProfileEditFormOpen={isProfileEditFormOpen}
                 handleProfileEditModalToggleOpen={
                   handleProfileEditModalToggleOpen
