@@ -11,6 +11,10 @@ function LoginModal({
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
 
+  React.useEffect(() => {
+    resetForm()
+  }, [isLoginFormOpen, resetForm])
+
   // Check if submit button should be disabled
   const isSubmitDisabled = !isValid
 
@@ -18,7 +22,6 @@ function LoginModal({
   function handleSubmit(e) {
     e.preventDefault()
     handleLogin(values)
-    resetForm()
   }
 
   // Handle register button click
