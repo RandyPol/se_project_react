@@ -11,6 +11,10 @@ const RegisterModal = ({
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
 
+  React.useEffect(() => {
+    resetForm()
+  }, [isRegisterFormOpen, resetForm])
+
   // Check if submit button should be disabled
   const isSubmitDisabled = !isValid
 
@@ -18,7 +22,6 @@ const RegisterModal = ({
   const handleSubmit = (e) => {
     e.preventDefault()
     handleRegister(values)
-    resetForm()
   }
 
   // Handle login button click
@@ -31,8 +34,8 @@ const RegisterModal = ({
     <ModalWithForm
       title="Sign up"
       name="register"
-      buttonTextIsLoadingTrue='Registering...'
-      buttonTextIsLoadingFalse='Next'
+      buttonTextIsLoadingTrue="Registering..."
+      buttonTextIsLoadingFalse="Next"
       handleFormToggleOpen={handleRegisterModalToggleOpen}
       handleSubmit={handleSubmit}
       handleOrButtonClick={handleLoginClick}
