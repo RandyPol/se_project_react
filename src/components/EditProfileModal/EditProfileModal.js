@@ -1,14 +1,16 @@
 import React from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import { useFormAndValidation } from '../../hook/useFormAndValidation'
+import CurrentUserContext from '../../contexts/CurrentUserContext'
 
 const EditProfileModal = ({
   isProfileEditFormOpen,
   handleProfileEditModalToggleOpen,
   handleProfileEdit,
 }) => {
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormAndValidation()
+  const { values, handleChange, errors, isValid } = useFormAndValidation()
+
+  const { currentUser } = React.useContext(CurrentUserContext)
 
   // Check if submit button should be disabled
   const isSubmitDisabled = !isValid
@@ -17,7 +19,6 @@ const EditProfileModal = ({
   const handleSubmit = (e) => {
     e.preventDefault()
     handleProfileEdit(values)
-    resetForm()
   }
   return (
     <ModalWithForm
@@ -46,7 +47,7 @@ const EditProfileModal = ({
           required
           minLength="2"
           maxLength="30"
-          value={values.name || ''}
+          value={values.name || currentUser.name}
           onChange={handleChange}
         />
       </fieldset>
@@ -64,7 +65,7 @@ const EditProfileModal = ({
           type="url"
           placeholder="Avatar URL"
           required
-          value={values.avatar || ''}
+          value={values.avatar || currentUser.avatar}
           onChange={handleChange}
         />
       </fieldset>
