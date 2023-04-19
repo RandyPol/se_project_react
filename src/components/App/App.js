@@ -242,7 +242,12 @@ function App() {
 
   return (
     <CurrentUserContext.Provider
-      value={{ currentUser, handleLogout, handleProfileEditModalToggleOpen }}
+      value={{
+        currentUser,
+        isLoading,
+        handleLogout,
+        handleProfileEditModalToggleOpen,
+      }}
     >
       <div className="page">
         <div className="page__container">
@@ -284,7 +289,6 @@ function App() {
             {isModalFormOpen && (
               <AddItemModal
                 isModalFormOpen={isModalFormOpen}
-                isLoading={isLoading}
                 onAddItem={handleAddItemSubmit}
                 handleFormToggleOpen={handleFormToggleOpen}
               />
