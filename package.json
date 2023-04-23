@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && scp -r ./build/* randypolure@api.weather2023.mooo.com:/home/randypolure/frontend_React/"
   },
   "eslintConfig": {
     "extends": [
