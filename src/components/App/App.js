@@ -18,18 +18,16 @@ import ProtectedRoute from '../ProtectedRoute'
 
 // Hooks and utils imports
 import useAuth from '../../hooks/useAuth'
+import useWeather from '../../hooks/useWeather'
 
 import api from '../../utils/api'
-import {
-  requestWeatherApiData,
-  weatherDataProcesing,
-} from '../../utils/weatherApi'
 
 function App() {
   const { loggedIn, checkingAuth, currentUser, setCurrentUser, setLoggedIn } =
     useAuth()
 
-  const [weatherData, setWeatherData] = React.useState({})
+  const { weatherData } = useWeather()
+
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
@@ -44,17 +42,6 @@ function App() {
   const [clothingItems, setClothingItems] = React.useState([])
   // Card item info for the Card that was clicked to open the ItemModal
   const [cardItem, setCardItem] = React.useState({})
-
-  // Api call to get the weather data from the weather api (on mount only once)
-  React.useEffect(() => {
-    requestWeatherApiData()
-      .then((data) => {
-        // Update the weather data in the state after processing the data
-        const processData = weatherDataProcesing(data)
-        setWeatherData(processData)
-      })
-      .catch((err) => console.log(err))
-  }, [])
 
   // useEffect to get clothing items from the api and set them to the state
   React.useEffect(() => {
