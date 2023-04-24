@@ -20,6 +20,7 @@ import ProtectedRoute from '../ProtectedRoute'
 import useAuth from '../../hooks/useAuth'
 import useWeather from '../../hooks/useWeather'
 import useClothingItems from '../../hooks/useClothingItems'
+import useModalStates from '../../hooks/useModalStates'
 
 import api from '../../utils/api'
 
@@ -28,15 +29,21 @@ function App() {
     useAuth()
   const { weatherData } = useWeather()
   const { clothingItems, setClothingItems } = useClothingItems()
+  const {
+    isModalFormOpen,
+    isItemModalOpen,
+    isDeleteModalOpen,
+    isRegisterFormOpen,
+    isLoginFormOpen,
+    isProfileEditFormOpen,
+    setIsModalFormOpen,
+    setIsItemModalOpen,
+    setIsDeleteModalOpen,
+    setIsRegisterFormOpen,
+    setIsLoginFormOpen,
+    setIsProfileEditFormOpen,
+  } = useModalStates()
 
-  const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
-  const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
-  const [isLoading, setIsLoading] = React.useState(false)
-  const [isRegisterFormOpen, setIsRegisterFormOpen] = React.useState(false)
-  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
-  const [isProfileEditFormOpen, setIsProfileEditFormOpen] =
-    React.useState(false)
 
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
 
