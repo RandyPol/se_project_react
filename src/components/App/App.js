@@ -183,11 +183,16 @@ function App() {
       .authorize(email, password)
       .then((data) => {
         if (data.token) {
-          handleLoginModalToggleOpen(close)
           localStorage.setItem('jwt', JSON.stringify(data.token))
-          setCurrentUser(data.user)
-          setLoggedIn(true)
+          return auth.checkToken(data.token)
+        } else {
+          throw new Error('Token not received')
         }
+      })
+      .then((userData) => {
+        setCurrentUser(userData)
+        setLoggedIn(true)
+        handleLoginModalToggleOpen(close)
       })
       .catch((err) => console.log(err))
       .finally(() => {
