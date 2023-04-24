@@ -19,14 +19,15 @@ import ProtectedRoute from '../ProtectedRoute'
 // Hooks and utils imports
 import useAuth from '../../hooks/useAuth'
 import useWeather from '../../hooks/useWeather'
+import useClothingItems from '../../hooks/useClothingItems'
 
 import api from '../../utils/api'
 
 function App() {
   const { loggedIn, checkingAuth, currentUser, setCurrentUser, setLoggedIn } =
     useAuth()
-
   const { weatherData } = useWeather()
+  const { clothingItems, setClothingItems } = useClothingItems()
 
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
@@ -38,20 +39,9 @@ function App() {
     React.useState(false)
 
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
-  // Clothing items from the api
-  const [clothingItems, setClothingItems] = React.useState([])
+
   // Card item info for the Card that was clicked to open the ItemModal
   const [cardItem, setCardItem] = React.useState({})
-
-  // useEffect to get clothing items from the api and set them to the state
-  React.useEffect(() => {
-    api
-      .getInitialClothingItems()
-      .then((data) => {
-        setClothingItems(data)
-      })
-      .catch((err) => console.log(err))
-  }, [])
 
   // Toggle the temperature unit between Fahrenheit and Celsius
   const handleTempUnitToggle = () => {
