@@ -1,9 +1,6 @@
 import React from 'react'
-// Import the routing components from react-router-dom
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
-
-// Components
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
@@ -15,19 +12,23 @@ import RegisterModal from '../RegisterModal/RegisterModal'
 import LoginModal from '../LoginModal/LoginModal'
 import EditProfileModal from '../EditProfileModal/EditProfileModal'
 import CircularProgress from '@mui/material/CircularProgress'
-// Context Data
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext'
 import CurrentUserContext from '../../contexts/CurrentUserContext'
-// Utils and constants
+import ProtectedRoute from '../ProtectedRoute'
+
+// Hooks and utils imports
+import useAuth from '../../hooks/useAuth'
+
 import api from '../../utils/api'
 import {
   requestWeatherApiData,
   weatherDataProcesing,
 } from '../../utils/weatherApi'
-import ProtectedRoute from '../ProtectedRoute'
-import auth from '../../utils/auth'
 
 function App() {
+  const { loggedIn, checkingAuth, currentUser, setCurrentUser, setLoggedIn } =
+    useAuth()
+
   const [weatherData, setWeatherData] = React.useState({})
   const [isModalFormOpen, setIsModalFormOpen] = React.useState(false)
   const [isItemModalOpen, setIsItemModalOpen] = React.useState(false)
@@ -38,35 +39,11 @@ function App() {
   const [isProfileEditFormOpen, setIsProfileEditFormOpen] =
     React.useState(false)
 
-  // Login state
-  const [loggedIn, setLoggedIn] = React.useState(false)
-  const [checkingAuth, setCheckingAuth] = React.useState(true)
-
-  // Current user state
-  const [currentUser, setCurrentUser] = React.useState({})
-
   const [isTempFahrenheit, setIsTempFahrenheit] = React.useState(true)
   // Clothing items from the api
   const [clothingItems, setClothingItems] = React.useState([])
   // Card item info for the Card that was clicked to open the ItemModal
   const [cardItem, setCardItem] = React.useState({})
-
-  // Check for token in local storage and set loggedIn state
-  React.useEffect(() => {
-    const token = localStorage.getItem('jwt')
-    if (token) {
-      auth
-        .checkToken(JSON.parse(token))
-        .then((userData) => {
-          setCurrentUser(userData)
-          setLoggedIn(true)
-        })
-        .catch((error) => console.error(error))
-        .finally(() => setCheckingAuth(false))
-    } else {
-      setCheckingAuth(false)
-    }
-  }, [])
 
   // Api call to get the weather data from the weather api (on mount only once)
   React.useEffect(() => {
