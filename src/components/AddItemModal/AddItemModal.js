@@ -1,6 +1,6 @@
 import React from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
-import { useFormAndValidation } from '../../hook/useFormAndValidation'
+import { useFormAndValidation } from '../../hooks/useFormAndValidation'
 
 const AddItemModal = ({
   onAddItem,
