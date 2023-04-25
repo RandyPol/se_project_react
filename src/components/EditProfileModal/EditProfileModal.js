@@ -8,7 +8,8 @@ const EditProfileModal = ({
   handleProfileEditModalToggleOpen,
   handleProfileEdit,
 }) => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation()
+  const { values, handleChange, errors, isValid, isInputEmpty } =
+    useFormAndValidation()
 
   const { currentUser } = React.useContext(CurrentUserContext)
 
@@ -47,7 +48,7 @@ const EditProfileModal = ({
           required
           minLength="2"
           maxLength="30"
-          value={values.name || currentUser.name}
+          value={isInputEmpty.name ? '' : values.name || currentUser.name}
           onChange={handleChange}
         />
       </fieldset>
@@ -65,7 +66,7 @@ const EditProfileModal = ({
           type="url"
           placeholder="Avatar URL"
           required
-          value={values.avatar || currentUser.avatar}
+          value={isInputEmpty.avatar ? '' : values.avatar || currentUser.avatar}
           onChange={handleChange}
         />
       </fieldset>
