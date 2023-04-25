@@ -8,6 +8,34 @@ const useModalStates = () => {
   const [isLoginFormOpen, setIsLoginFormOpen] = useState(false)
   const [isProfileEditFormOpen, setIsProfileEditFormOpen] = useState(false)
 
+  // This is the function to toggle open and close the form modal
+  const handleFormToggleOpen = () => {
+    setIsModalFormOpen((prevs) => !prevs)
+  }
+
+  // Handle the toggle for the RegisterModal
+  const handleRegisterModalToggleOpen = () => {
+    setIsRegisterFormOpen((prevs) => !prevs)
+  }
+
+  // Handle the toggle for the LoginModal
+  const handleLoginModalToggleOpen = (status = true) => {
+    if (status) setIsLoginFormOpen((prevs) => !prevs)
+  }
+
+  // Handle the toggle for the DeleteModal
+  const handleDeleteModalToggleOpen = () => {
+    setIsDeleteModalOpen((prevs) => !prevs)
+  }
+  // Handle the toggle for the ProfileEditModal
+  const handleProfileEditModalToggleOpen = () => {
+    setIsProfileEditFormOpen((prevs) => !prevs)
+  }
+
+  const ItemModalToggleOpen = () => {
+    setIsItemModalOpen((prevs) => !prevs)
+  }
+
   return {
     isModalFormOpen,
     isItemModalOpen,
@@ -15,12 +43,12 @@ const useModalStates = () => {
     isRegisterFormOpen,
     isLoginFormOpen,
     isProfileEditFormOpen,
-    setIsModalFormOpen,
-    setIsItemModalOpen,
-    setIsDeleteModalOpen,
-    setIsRegisterFormOpen,
-    setIsLoginFormOpen,
-    setIsProfileEditFormOpen,
+    handleFormToggleOpen,
+    handleRegisterModalToggleOpen,
+    handleLoginModalToggleOpen,
+    handleDeleteModalToggleOpen,
+    handleProfileEditModalToggleOpen,
+    ItemModalToggleOpen,
   }
 }
 
