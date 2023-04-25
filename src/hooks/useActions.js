@@ -101,7 +101,6 @@ const useActions = (
 
   // Handle Profile Edit and update the user info
   const handleProfileEdit = ({ name, avatar }) => {
-    console.log(name, avatar)
     setIsLoading((prev) => !prev)
     api
       .updateProfile(name, avatar)
